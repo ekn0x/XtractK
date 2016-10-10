@@ -24,6 +24,7 @@
     <ClInclude Include="AbstractMatchSymbol.h" />
     <ClInclude Include="FiniteStateMachine.h" />
     <ClInclude Include="FSMCppCommentExtraction.h" />
+    <ClInclude Include="FSMCppConstantExtraction.h" />
     <ClInclude Include="FSMFileStatistics.h" />
     <ClInclude Include="MatchAllSymbols.h" />
     <ClInclude Include="MatchListSymbols.h" />
@@ -42,6 +43,7 @@
     <ClInclude Include="TransitionNewComment.h" />
     <ClInclude Include="TransitionOStream.h" />
     <ClInclude Include="XtractC.h" />
+    <ClInclude Include="XtractK.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AbstractBehavioralState.cpp" />
@@ -49,6 +51,7 @@
     <ClCompile Include="AbstractMatchSymbol.cpp" />
     <ClCompile Include="FiniteStateMachine.cpp" />
     <ClCompile Include="FSMCppCommentExtraction.cpp" />
+    <ClCompile Include="FSMCppConstantExtraction.cpp" />
     <ClCompile Include="FSMFileStatistics.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MatchAllSymbols.cpp" />
@@ -67,6 +70,7 @@
     <ClCompile Include="TransitionNewComment.cpp" />
     <ClCompile Include="TransitionOStream.cpp" />
     <ClCompile Include="XtractC.cpp" />
+    <ClCompile Include="XtractK.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{8ECDFD37-B1AD-468D-A7DE-C53885E541F3}</ProjectGuid>

@@ -132,6 +132,12 @@
     <ClInclude Include="Symbol.h">
       <Filter>Header Files\Finite State Machine\Symbol</Filter>
     </ClInclude>
+    <ClInclude Include="FSMCppConstantExtraction.h">
+      <Filter>Header Files\XtractK</Filter>
+    </ClInclude>
+    <ClInclude Include="XtractK.h">
+      <Filter>Header Files\XtractK</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -202,6 +208,12 @@
     </ClCompile>
     <ClCompile Include="TransitionInComment.cpp">
       <Filter>Source Files\XtractC\Transition</Filter>
+    </ClCompile>
+    <ClCompile Include="XtractK.cpp">
+      <Filter>Source Files\XtractK</Filter>
+    </ClCompile>
+    <ClCompile Include="FSMCppConstantExtraction.cpp">
+      <Filter>Source Files\XtractK</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

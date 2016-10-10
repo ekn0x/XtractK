@@ -13,7 +13,8 @@ void TransitionInComment::process(symbol_t prevSymbol, symbol_t curSymbol)
 {
 	TransitionCounter::process(prevSymbol, curSymbol);
 
-	*mStream << curSymbol;
+	// pas besoin
+	// *mStream << curSymbol;
 }
 
 

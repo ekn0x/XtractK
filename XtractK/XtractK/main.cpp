@@ -7,12 +7,12 @@
 #endif
 
 
-#include "XtractC.h"
+#include "XtractK.h"
 
 
 enum class ExitCode {	Ok = 0,  
-						XtractCParamException = 1,
-						XtractCException = 2,
+						XtractKParamException = 1,
+						XtractKException = 2,
 						StdException = 3,
 						NotHandled = 4
 					};
@@ -21,21 +21,21 @@ int main(int argc, char **argv)
 {
 
 	try {
-		XtractC xTractC;
+		XtractK xTractC;
 
 		xTractC.setup(argc, argv);
 		xTractC.process(true);
 	}
-	catch (XtractC::ParamException const & exception) {
-		cout << "XtractC exception caught : " << endl << exception.what() << endl;
-		cout << XtractC::CommandLineArgumentUsage << endl;
+	catch (XtractK::ParamException const & exception) {
+		cout << "XtractK exception caught : " << endl << exception.what() << endl;
+		cout << XtractK::CommandLineArgumentUsage << endl;
 		system("pause");
-		return static_cast<int>(ExitCode::XtractCParamException);
+		return static_cast<int>(ExitCode::XtractKParamException);
 	}
-	catch (XtractC::Exception const & exception) {
-		cout << "XtractC exception caught : " << endl << exception.what() << endl;
+	catch (XtractK::Exception const & exception) {
+		cout << "XtractK exception caught : " << endl << exception.what() << endl;
 		system("pause");
-		return static_cast<int>(ExitCode::XtractCException);
+		return static_cast<int>(ExitCode::XtractKException);
 	}
 	catch (exception const & e) {
 		cout << "std exception caught : "  << endl << e.what() << endl;
