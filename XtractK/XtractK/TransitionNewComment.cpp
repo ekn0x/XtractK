@@ -14,8 +14,8 @@ TransitionNewComment::TransitionNewComment(string const & name, AbstractMatchSym
 void TransitionNewComment::process(symbol_t prevSymbol, symbol_t curSymbol)
 {
 	TransitionCounter::process(prevSymbol, curSymbol);
-
-	*mStream << "Ligne " << setfill('0') << setw(mLinePaddingLength) << mFileStatistics.lineCount() << " - - - - -" << endl << prevSymbol << curSymbol;
+	// pas besoin
+	//*mStream << "Ligne " << setfill('0') << setw(mLinePaddingLength) << mFileStatistics.lineCount() << " - - - - -" << endl << prevSymbol << curSymbol;
 }
 
 

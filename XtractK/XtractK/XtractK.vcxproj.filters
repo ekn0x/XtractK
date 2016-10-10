@@ -138,6 +138,9 @@
     <ClInclude Include="XtractK.h">
       <Filter>Header Files\XtractK</Filter>
     </ClInclude>
+    <ClInclude Include="TransitionNewConstant.h">
+      <Filter>Header Files\XtractK\Transition</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -214,6 +217,9 @@
     </ClCompile>
     <ClCompile Include="FSMCppConstantExtraction.cpp">
       <Filter>Source Files\XtractK</Filter>
+    </ClCompile>
+    <ClCompile Include="TransitionNewConstant.cpp">
+      <Filter>Source Files\XtractK\Transition</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

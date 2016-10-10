@@ -41,6 +41,7 @@
     <ClInclude Include="TransitionExitingCStyle.h" />
     <ClInclude Include="TransitionInComment.h" />
     <ClInclude Include="TransitionNewComment.h" />
+    <ClInclude Include="TransitionNewConstant.h" />
     <ClInclude Include="TransitionOStream.h" />
     <ClInclude Include="XtractC.h" />
     <ClInclude Include="XtractK.h" />
@@ -68,6 +69,7 @@
     <ClCompile Include="TransitionExitingCStyle.cpp" />
     <ClCompile Include="TransitionInComment.cpp" />
     <ClCompile Include="TransitionNewComment.cpp" />
+    <ClCompile Include="TransitionNewConstant.cpp" />
     <ClCompile Include="TransitionOStream.cpp" />
     <ClCompile Include="XtractC.cpp" />
     <ClCompile Include="XtractK.cpp" />

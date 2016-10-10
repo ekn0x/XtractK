@@ -83,7 +83,7 @@ private:
 	ofstream mOutputFile;
 	ostream * mOStream;
 	bool mFSMStatisticsSuccess;
-	bool mFSMCommentsSuccess;
+	bool mFSMCommentsSuccess; // Peut etre que l'on va devoir changer ca
 
 	void openInputFile(const string & inputFileName);
 	void openOutputFile(const string & outputFileName);
