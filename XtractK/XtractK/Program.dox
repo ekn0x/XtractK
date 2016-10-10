@@ -1,0 +1,58 @@
+/*!
+
+\page program_summary Présentation sommaire du programme développé
+
+\tableofcontents
+
+\section program_intro Introduction
+Le programme développé est issu d'une conception basée sur l'implémentation de l'_ACEF_ développé (voir \ref cpp_comment_extraction). Il existe une multitude de façons de produire un programme simulant une _AEF_. Par exemple, l'approche traditionnelle réalise l'implémentation à l'aide d'une suite de `switch / case` représentant les différents états de l'automate. Étant donné le contexte du cours, un effort particulier a été apporté à l'utilisation des notions relatives à la conceptions orientée objet. Ainsi, la solution présentée n'est certainement pas la plus rapide en exécution ou la plus petite en taille mémoire. Néanmoins, elle a le mérite d'être très modulaire, réutilisable et élégante sans trop de compromis sur la performance générale du système.
+
+Étant donné le côté académique de l'exercice et des questions à répondre, le lecteur comprend qu'une partie de la documentation est laissée volontairement vague.
+
+\section program_structure Structure principale
+Le programme se présente en quatre parties principales :
+ -# les classes permettant de définir un _ACEF_ générique;
+ -# les classes permettant de définir l'_ACEF_ présenté permettant de résoudre ce problème;
+ -# une classe de contrôle permettant d'accéder aux entrées et sorties tout en utilisant les deux automates développés;
+ -# la fonction `main` faisant simplement l'appel du traitement structuré.
+
+\subsection program_structure_1 Classes de l'ACEF générique
+ - Les états représentent chaque situation de l'analyse lexical suite au traitement d'un symbole. Chaque état peut posséder plusieurs transitions. Trois classes permettent de représenter ces éléments :
+     - State : un état simple
+     - AbstractBehavioralState : un état comportemental (incluant 3 actions possibles)
+     - StateCounter : un état comportemental défini qui compte le nombre de fois que l'état a été utilisé
+ - Les transitions représentent les liens entre chaque état. Elles sont principalement constitué d'une condition (voir les _Match Symbol_ plus bas) et de l'étae suivante. Chaque transition posséde une condition. Quatre classes existent :
+     - Transition : une transition simple
+	 - AbstractBehavioralTransition : une transition comportementale (incluant 1 action)
+	 - TransitionCounter : une transition comportementale définie qui compte le nombre de fois que la transition a été utilisée
+	 - TransitionOStream : une transition de type comptage qui possède un `ostream` pour produire de l'information en sortie
+ - Les conditions de comparaison permettant de valider si un symbole est accepté ou non pour effectuer une transition. Six classes implémentent plusieurs conditions :
+     - AbstractMatchSymbol : une condition
+	 - MatchSingleSymbol : compare une symbole égal
+	 - MatchNotSingleSymbol : compare une symbole différent
+	 - MatchListSymbols : compare si le symbole fait partie d'un ensemble
+	 - MatchNotListSymbols : compare si le symbole ne fait pas partie d'un ensemble
+	 - MatchAllSymbols : accepte tous les symboles
+ - L'automate à états-finis est le corps principal possédant les états et toute la mécanique de traitement validant les conditions ainsi que les transitions. On y retrouve aussi la définition de l'état initial ainsi que de l'état courant. Une seule classe est définie :
+     - FiniteStateMachine : un automate prenant en charge une définition simple ou une définition comportemental
+
+\subsection program_structure_2 Classes des deux automates développés
+ - L'automatique faisant l'analyse statistiques du fichier utilise les classes d'état et de transitions existante.
+     - FSMFileStatistics : définition de l'automate et préparation complète
+ - Automatique réalisant l'extraction des commentaires utilise les états existants mais requiert 5 nouvelles classes de transition :
+     - TransitionNewComment : transition représentant l'entrée dans un nouveau commentaire
+     - TransitionInComment : transition représentant un symbole dans le commentaire courant
+     - TransitionExitingCStyle : transition représentant la sortie d'un commentaire de style C
+     - TransitionExitingCppStyle : transition représentant la sortie d'un commentaire de style C++
+	 - TransitionBackToComment : transition représentant le retour au commentaire courant après l'évaluation d'une certaine condition
+     - FSMCppCommentExtraction : définition de l'automate et préparation complète
+
+\subsection program_structure_3 Classe de contrôle du système
+ - Une seule classe permet de faire la gestion des entrées, des sorties et du déroublement principal du programme :
+     - XtractC : encapsule les opérations du programme
+
+
+
+
+
+*/

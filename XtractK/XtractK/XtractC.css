@@ -1,0 +1,34 @@
+﻿
+
+div.image img[src="Exemple_FonctionsEtatsEventuels.png"]
+{ 
+	/* width 506 - 85% */
+	width:430px; 
+}
+
+div.image img[src="Exemple_FSM_Diagramme.png"]
+{ 
+	/* width 576 - 75% */
+	width:432px;
+}
+
+div.image img[src="Exemple_FSM_TableTransition.png"]
+{ 
+	/* width 496 - 75% */
+	width:372px; 
+}
+
+div.image img[src="Diagramme_ACEF.png"]
+{ 
+	/* width 495 - 75% */
+	width:371px; 
+}
+
+div.image img[src="DiagrammeDEtats_ExtractionCommentairesCpp.png"]
+{ 
+	/* width 2809 - 35% */
+	width:983px; 
+}
+
+
+

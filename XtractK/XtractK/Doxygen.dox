@@ -1,0 +1,93 @@
+/*!
+
+\page doxygen Génération automatique de la documentation
+
+\tableofcontents
+
+\section doxygen_intro Doxygen
+_Doxygen_ est un générateur de documentation capable de produire une documentation logicielle à partir du code source d'un programme. Pour cela, il tient compte de la grammaire du langage dans lequel est écrit le code source, ainsi que des commentaires s'ils sont écrits dans un format particulier.
+
+En permettant l'intégration de la documentation directement dans le code source, _Doxygen_ permet de favoriser la cohérence entre la documentation et le code et de systématiser le comportement des développeurs afin qu'ils documentent le code qu'ils produisent. Il est également possible d'extraire de la documentation à partir d’un code source non documenté au préalable, ce qui peut faciliter la compréhension d'un programme dont le code est compliqué.
+
+Le logiciel _Doxywizard_ accompagne le logiciel _Doxygen_ et lui sert d'interface graphique facilitant la création de fichier de configuration (_Doxygen GUI frontend_). Ce logiciel se présente ainsi :
+ - Le logiciel est orienté de façon à définir plus facilement tous les paramètres nécessaire à la génération automatique de la documentation.
+ - On remarque qu'un projet est défini en 2 étapes principales :
+     -# Définition du dossier de travail
+     -# Configuration des paramètres et exécution
+ - La première étape permet de spécifier quel est le dossier de travail. Ce dossier sera le point d'entrée et il est possible ensuite de définir tous les autres paramètres relatif à ce dossier.
+ - La deuxième étape est constituée des trois onglets suivants :
+     - Wizard : permet de définir les paramètres principaux du projet
+     - Expert : permet de définir tous les autres paramètres possibles
+     - Run : permet d'exécuter le programme et d'amorcer la création de la documentation automatique
+ - À l'amorce d'un nouveau projet, tous les paramètres possèdent une valeur suggérée par défaut. Lorsque vous changez ces valeurs, la couleur rouge vous indique que vous avez modifiez ce paramètre. Dès lors, il est beaucoup plus facile de voir les éléments qui ont été modifiés. 
+
+\section doxygen_create Création d'un fichier de configuration
+Les étapes suivantes présentent comment créer un fichier de configuration Doxygen à l'aide du logiciel _Doxywizard_. Pour le reste de la documentation, l'élément _dir_ fait référence au dossier de travail du projet.
+ -# Télécharger et installer le logicel <a href="http://www.stack.nl/~dimitri/doxygen/download.html" target="_blank">Doxygen</a>
+ -# Démarrer Doxywizard
+ -# D'abord, créez un nouveau projet en créant un nouveau fichier _Doxygen_ :
+      - Assurez-vous d'avoir créé l'arborescence de dossiers et copiez adéquatement les fichiers mentionnés (voir \ref setup_solution_manip_4).
+	  - Créez le fichier de projet avec Doxywizard avec la commande du menu _File / Save as ..._ et spécifiez les paramètres suivants :
+		  - dossier : `dir/XtractC/XtractC/doc`
+		  - nom du fichier : `XtractC.doxpro`\n
+		  _prenez note qu'il n'y a pas d'extension déterminée par défaut pour un projet Doxygen - doxpro est une extension arbitraire suggérée (DOXygen PROject) mais qui reste à votre choix_\n
+		  _de plus, cette étape assigne automatique l'étape 1 du projet : le dossier de travail_
+ -# L'étape 2 consiste à définir tous les paramètres du projet. On vous suggère ici une liste de plusieurs paramètres pertinents. Il en existe beaucoup d'autres que vous pourrez explorer. Puisque ceci consiste en un exercice de premier contact, ça reste une bonne introduction. Aussi, le détail de chaque item est auto documenté à même l'application. Si ce n'est pas suffisant, il est important d'aller voir la documentation sur internet pour plus de détail. Veuillez suivre l'ordre présenté pour ne pas avoir de difficulté.
+      - `Expert | Input | INPUT` : Ajouter les deux entrées suivantes :
+	      - ..
+		  - source
+      - `Expert | Input | IMAGE_PATH` : Ajouter l'entrée suivante :
+	      - images
+      - `Expert | Project | PROJECT_NAME` : GPA789 - Analyse et conception orientée objet
+      - `Expert | Project | PROJECT_BRIEF` : Laboratoire 1 - Extraction des commentaires du langage C++
+      - `Expert | Project | PROJECT_LOGO` : `images/LogoGPA_XSmall.jpg`
+      - `Expert | Project | OUTPUT_DIRECTORY` : `generated`
+      - `Expert | Project | OUTPUT_LANGUAGE` : _french_
+	  - `Expert | Build | SHOW_USED_FILES` : _décocher la case_
+	  - `Expert | HTML | HTML_EXTRA_PAGE` : Ajouter l'entrée suivante :
+	     - `images/DiagrammeDEtats_ExtractionCommentairesCpp.png`
+      - `Expert | HTML | HTML_EXTRA_STYLESHEET` : Ajouter l'entrée suivante :
+	     - `css/XtractC.css`
+      - `Expert | HTML | USE_MATHJAX` : _cocher la case afin d'activer l'option_
+      - `Wizard | Output | LaTeX` : _décocher la case afin de ne pas générer la documentation en format LaTeX_
+
+\section doxygen_generate Génération de la documentation
+Il est maintenant poissible de générer la documentation avec _Doxywizard_. Sous l'étape 2, dans l'onglet _Run_, il suffit d'appuyer sur le bouton _Run doxygen_;
+
+Pour consulter la documentation, ouvrez le fichier `index.html` qui se trouve dans le dossier `dir/XtractC/XtractC/doc/generated/html`. Un conseil, faites-vous un raccourci vers ce dossier : `dir/XtractC/XtractC/doc/`
+
+\section doxygen_automation Automatisation
+Il est possible d'automatiser la production de la documentation afin que cette dernière soit générée systématiquement à chaque compilation. De cette façon, la documentation est mise à jour et il n'y a pas de risque que la documentation soit asynchrone avec le programme. 
+
+Pour y arriver on utilise la possibilité qu'offre _Visual Studio_ d'ajouter des tâches pré-compilatoire ou post-compilatoire. Il suffit donc de créer une tâche faisant appelant l'exécutable de _Doxygen_ avec le bon fichier de configuration créé plus haut. Voici les étapes à suivre :
+ -# Créer un fichier de commande (_batch file_) avec ces paramètres :
+      - dossier : `dir/XtractC/XtractC/tools`
+      - nom du fichier : `PostBuildEvent.bat` 
+ -# Insérer ce fichier dans _Visual Studio_ pour pouvoir le manipuler si nécessaire. Dans l'_Explorateur de solution_, ajouter un fichier `PostBuildEvent.bat` sous le filtre _Tools_ de votre solution.
+ -# Ouvrez le fichier dans un éditeur texte. En double cliquant sur le fichier, vous pourrez l'éditer à même _Visual Studio_.
+ -# Insérer ces 12 lignes :
+\code{.unparsed}
+echo.
+echo Processing documentation with Doxygen ...
+echo.
+
+REM Setting Working Folder
+cd "dir\XtractC\XtractC\doc"
+
+REM Call Doxygen for automatic documentation with project configuration file
+"C:\Program Files\doxygen\bin\doxygen.exe" "dir\XtractC\XtractC\doc\XtractC.doxpro"
+
+echo.
+echo ... documentation generated!
+\endcode
+ -# Sauvegarder le fichier.
+ -# Dans _Visual Studio_ avec votre solution ouverte, allez dans le menu _Project / XtractC Properties..._ (tout en bas du menu). Faites les ajustements suivants :
+       - En haut, dans la section _Configuration_ choisissez _All configurations_
+	   - Spécifier la propriété suivante :
+	       - Nom : _Configuration Properties / Build Events / Post-Build Event / Command Line_
+		   - Valeur : tools/PostBuildEvent.bat
+ -# Appuyez sur `Ok` et sauveguarder votre solution.
+
+Notez que l'emplacement du fichier `doxygen.exe` dépend des spécifications lors de l'installation. Veuillez corriger la ligne 9 si nécessaire. Finalement, n'oubliez pas de modifier l'élément _dir_ aux lignes 6 et 9.
+
+*/

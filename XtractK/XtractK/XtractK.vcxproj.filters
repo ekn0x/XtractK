@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\Finite State Machine">
+      <UniqueIdentifier>{4a77bea6-2679-4d26-b89f-61624af34687}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\XtractK">
+      <UniqueIdentifier>{8af04692-0d6a-43d3-9bb9-d036aa30d343}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Finite State Machine\State">
+      <UniqueIdentifier>{6252151a-eda4-4ddf-bcbd-6c692da7f4da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Finite State Machine\Symbol">
+      <UniqueIdentifier>{e91fd51a-0260-4c2a-b6e2-40cb7501a6d5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Finite State Machine\Transition">
+      <UniqueIdentifier>{efe3fecb-401e-495d-bf4a-4eaf316f934a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Finite State Machine">
+      <UniqueIdentifier>{86fedae5-cfc8-433f-ad99-e24885b199bc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Finite State Machine\State">
+      <UniqueIdentifier>{50a88c61-3568-4c58-8e1a-15bbb5cb88c7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Finite State Machine\Symbol">
+      <UniqueIdentifier>{0647e6fe-d2ed-4946-b763-038b42f7517d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Finite State Machine\Transition">
+      <UniqueIdentifier>{655cca43-4a9c-48d0-aae1-dcab7aa926c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\XtractK">
+      <UniqueIdentifier>{0c95997b-4ded-49b9-9eb1-cede45880725}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\XtractC">
+      <UniqueIdentifier>{8ed1cfb0-6a45-4d40-afa7-ac3f25800d5e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\XtractC">
+      <UniqueIdentifier>{2d31b8d8-ba53-4314-9169-f6ffcb1c797b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\XtractC\Transition">
+      <UniqueIdentifier>{6962bfe1-dc5c-41f3-96c3-576a3491d0f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\XtractK\Transition">
+      <UniqueIdentifier>{341645dc-2929-4fba-945a-88ecd2a15121}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\XtractC\Transition">
+      <UniqueIdentifier>{66c4aabb-96b6-411d-86e9-f031ab353d31}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\XtractK\Transition">
+      <UniqueIdentifier>{a7a14946-b686-48b9-9d48-f26402dcc8b4}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AbstractBehavioralState.h">
+      <Filter>Header Files\Finite State Machine\State</Filter>
+    </ClInclude>
+    <ClInclude Include="AbstractBehavioralTransition.h">
+      <Filter>Header Files\Finite State Machine\Transition</Filter>
+    </ClInclude>
+    <ClInclude Include="AbstractMatchSymbol.h">
+      <Filter>Header Files\Finite State Machine\Symbol</Filter>
+    </ClInclude>
+    <ClInclude Include="FiniteStateMachine.h">
+      <Filter>Header Files\Finite State Machine</Filter>
+    </ClInclude>
+    <ClInclude Include="FSMCppCommentExtraction.h">
+      <Filter>Header Files\XtractC</Filter>
+    </ClInclude>
+    <ClInclude Include="FSMFileStatistics.h">
+      <Filter>Header Files\XtractC</Filter>
+    </ClInclude>
+    <ClInclude Include="MatchAllSymbols.h">
+      <Filter>Header Files\Finite State Machine\Symbol</Filter>
+    </ClInclude>
+    <ClInclude Include="MatchListSymbols.h">
+      <Filter>Header Files\Finite State Machine\Symbol</Filter>
+    </ClInclude>
+    <ClInclude Include="MatchNotListSymbols.h">
+      <Filter>Header Files\Finite State Machine\Symbol</Filter>
+    </ClInclude>
+    <ClInclude Include="MatchNotSingleSymbol.h">
+      <Filter>Header Files\Finite State Machine\Symbol</Filter>
+    </ClInclude>
+    <ClInclude Include="MatchSingleSymbol.h">
+      <Filter>Header Files\Finite State Machine\Symbol</Filter>
+    </ClInclude>
+    <ClInclude Include="Transition.h">
+      <Filter>Header Files\Finite State Machine\Transition</Filter>
+    </ClInclude>
+    <ClInclude Include="State.h">
+      <Filter>Header Files\Finite State Machine\State</Filter>
+    </ClInclude>
+    <ClInclude Include="StateCounter.h">
+      <Filter>Header Files\Finite State Machine\State</Filter>
+    </ClInclude>
+    <ClInclude Include="TransitionCounter.h">
+      <Filter>Header Files\Finite State Machine\Transition</Filter>
+    </ClInclude>
+    <ClInclude Include="TransitionOStream.h">
+      <Filter>Header Files\Finite State Machine\Transition</Filter>
+    </ClInclude>
+    <ClInclude Include="TransitionBackToComment.h">
+      <Filter>Header Files\XtractC\Transition</Filter>
+    </ClInclude>
+    <ClInclude Include="TransitionExitingCppStyle.h">
+      <Filter>Header Files\XtractC\Transition</Filter>
+    </ClInclude>
+    <ClInclude Include="TransitionExitingCStyle.h">
+      <Filter>Header Files\XtractC\Transition</Filter>
+    </ClInclude>
+    <ClInclude Include="TransitionInComment.h">
+      <Filter>Header Files\XtractC\Transition</Filter>
+    </ClInclude>
+    <ClInclude Include="TransitionNewComment.h">
+      <Filter>Header Files\XtractC\Transition</Filter>
+    </ClInclude>
+    <ClInclude Include="XtractC.h">
+      <Filter>Header Files\XtractC</Filter>
+    </ClInclude>
+    <ClInclude Include="Symbol.h">
+      <Filter>Header Files\Finite State Machine\Symbol</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AbstractBehavioralState.cpp">
+      <Filter>Source Files\Finite State Machine\State</Filter>
+    </ClCompile>
+    <ClCompile Include="AbstractBehavioralTransition.cpp">
+      <Filter>Source Files\Finite State Machine\Transition</Filter>
+    </ClCompile>
+    <ClCompile Include="AbstractMatchSymbol.cpp">
+      <Filter>Source Files\Finite State Machine\Symbol</Filter>
+    </ClCompile>
+    <ClCompile Include="FiniteStateMachine.cpp">
+      <Filter>Source Files\Finite State Machine</Filter>
+    </ClCompile>
+    <ClCompile Include="FSMCppCommentExtraction.cpp">
+      <Filter>Source Files\XtractC</Filter>
+    </ClCompile>
+    <ClCompile Include="FSMFileStatistics.cpp">
+      <Filter>Source Files\XtractC</Filter>
+    </ClCompile>
+    <ClCompile Include="MatchAllSymbols.cpp">
+      <Filter>Source Files\Finite State Machine\Symbol</Filter>
+    </ClCompile>
+    <ClCompile Include="MatchListSymbols.cpp">
+      <Filter>Source Files\Finite State Machine\Symbol</Filter>
+    </ClCompile>
+    <ClCompile Include="MatchNotListSymbols.cpp">
+      <Filter>Source Files\Finite State Machine\Symbol</Filter>
+    </ClCompile>
+    <ClCompile Include="MatchNotSingleSymbol.cpp">
+      <Filter>Source Files\Finite State Machine\Symbol</Filter>
+    </ClCompile>
+    <ClCompile Include="MatchSingleSymbol.cpp">
+      <Filter>Source Files\Finite State Machine\Symbol</Filter>
+    </ClCompile>
+    <ClCompile Include="State.cpp">
+      <Filter>Source Files\Finite State Machine\State</Filter>
+    </ClCompile>
+    <ClCompile Include="StateCounter.cpp">
+      <Filter>Source Files\Finite State Machine\State</Filter>
+    </ClCompile>
+    <ClCompile Include="Transition.cpp">
+      <Filter>Source Files\Finite State Machine\Transition</Filter>
+    </ClCompile>
+    <ClCompile Include="TransitionCounter.cpp">
+      <Filter>Source Files\Finite State Machine\Transition</Filter>
+    </ClCompile>
+    <ClCompile Include="TransitionOStream.cpp">
+      <Filter>Source Files\Finite State Machine\Transition</Filter>
+    </ClCompile>
+    <ClCompile Include="XtractC.cpp">
+      <Filter>Source Files\XtractC</Filter>
+    </ClCompile>
+    <ClCompile Include="TransitionNewComment.cpp">
+      <Filter>Source Files\XtractC\Transition</Filter>
+    </ClCompile>
+    <ClCompile Include="TransitionBackToComment.cpp">
+      <Filter>Source Files\XtractC\Transition</Filter>
+    </ClCompile>
+    <ClCompile Include="TransitionExitingCppStyle.cpp">
+      <Filter>Source Files\XtractC\Transition</Filter>
+    </ClCompile>
+    <ClCompile Include="TransitionExitingCStyle.cpp">
+      <Filter>Source Files\XtractC\Transition</Filter>
+    </ClCompile>
+    <ClCompile Include="TransitionInComment.cpp">
+      <Filter>Source Files\XtractC\Transition</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

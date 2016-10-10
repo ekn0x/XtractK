@@ -1,0 +1,22 @@
+/*!
+
+\page newline Particularité des sauts de lignes
+
+\tableofcontents
+
+\section newline_problem Problématique
+Les sauts de lignes présents dans les fichiers texte sont encodés différemment selon le système d'exploitation. Sous _DOS/Windows_, les sauts de ligne sont indiqués par la suite des caractères `\r` et `\n`. Sous _Unix/Linux_, les sauts de ligne se présentent simplement par `\n`. Cette différence est importante et rend l'utilisation de tels fichiers plus difficiles. Sous Windows, il importe de gérer deux caractères pour effectuer le saut de ligne.
+
+\section newline_solution Solution élégante en C++
+
+La bibliothèque _STL_, via les classes du groupe `fstream`, offre une gestion efficace à cette problématique. En effet, l'implémentation de la bibliothèque est dépendante du système d'exploitation cible. 
+
+Le cas particulier de _Windows_ est géré ainsi :
+ - en lecture, si deux caractères `\r` et `\n` sont lu consécutivement, seul le caractère `\n` est retourné;
+ - en écriture, le caractère `\n` est traduit dans le fichier cible par `\r` et `\n`.
+
+Sous _Linux_, le comportement attendu est réalisé.
+
+Heureusement pour le développeur, les deux versions de la bibliothèque gèrent de façon transparente le `\n`.
+
+*/

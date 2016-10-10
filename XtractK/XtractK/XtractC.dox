@@ -1,0 +1,53 @@
+//! \mainpage  GPA789 - Laboratoire 1 - Extraction des commentaires du langage C++
+//!
+//! \tableofcontents
+//! 
+//! \section intro Introduction
+//! Les commentaires jouent un rôle important dans la documentation d’un programme informatique. Malheureusement, les commentaires sont souvent les seules informations disponibles pour la compréhension du code source. Cette situation malencontreuse est surtout remarquée dans les partagiciels où le code source est distribué gratuitement. Il est donc intéressant de pouvoir extraire les commentaires des fichiers sources afin de faciliter l’étude et l’analyse du programme.
+//!
+//! Ce premier laboratoire est un projet de programmation utilisant le langage C++ et les techniques de l'orientée objet. Il s’agit de la conception et de la réalisation d’un automate à états finis (AEF). Cet \a AEF doit être en mesure d’extraire les commentaires contenus dans le code source des programmes écrits en C++. 
+//!
+//! La spécialisation de cet AEF générique permettra d’appliquer des actions appropriées sur les commentaires détectés. Ce laboratoire consiste d'abord à vous approprier un programme existant à propos duquel vous aurez à répondre à plusieurs questions. Aussi, vous devrez réaliser une nouveau projet à partir de celui-ci.
+//!
+//! \section objectifs Objectifs pédagogiques
+//! Les objectifs pédagogiques de ce laboratoire sont énumérés ci-dessous en ordre décroissant d’importance:
+//!  -# Prendre contact avec le paradigme de la programmation orienté objet.
+//!  -# Apprendre la syntaxe et la sémantique du langage C++.
+//!  -# Se familiariser avec l’environnement de développement Visual C++.
+//!  -# Saisir la différence entre une classe et un objet.
+//!  -# Comprendre le mécanisme impliqué dans la dérivation des classes.
+//!  -# Manipuler les fonctions membres virtuelles d’une classe C++.
+//!  -# Apprécier les capacités des automates à états finis.
+//!  -# Décortiquer et s'approprié le code réalisé par une autre personne.
+//!  -# Mettre en oeuvre quelques éléments issus de programmation orientée objet.
+//!  -# Apprendre à bien documenter un programme.
+//!
+//! \section concepts Concepts importants liés à la réalisation de ce laboratoire
+//! Cette section présente les explications détaillées de ce laboratoire. Lisez attentivement les éléments ci-dessous puisque leur compréhension est essentielle à la réalisation du projet.
+//!
+//! \subsection basic Retour sur quelques concepts essentiels
+//! Vous trouverez ici plusieurs notions de base sur lesquels sont basés ce laboratoire :
+//!  - \ref comments
+//!  - \ref multiline
+//!  - \ref newline
+//!  - \ref fsm
+//! 
+//! \subsection program Présentation du programme donné
+//! On présente d'abord l'automate développé et ensuite le programme lui-même :
+//!  - \ref cpp_comment_extraction
+//!  - \ref program_summary
+//!
+//! \section todo Travaux à effectuer
+//! La réalisation de ce laboratoire ce fait en 4 étapes :
+//!  -# Lecture des documents de référence. Il est essentiel d'avoir lu et bien compris les éléments énumérés plus haut afin de poursuivre le laboratoire.
+//!  -# \ref setup_solution
+//!  -# \ref questions
+//!  -# \ref production
+//!
+//! La remise doit être un fichier compressé nommé `GPA789_Lab1_NomPrenomEtudiant1_NomPrenomEtudiant2.zip` contenant les deux éléments suivants :
+//! - document _PDF_ de vos réponses aux questions posées;
+//! - le fichier compressé du projet que vous avez réalisé
+//!
+//! L'ordre d'apparition des deux étudiants est important. L'étudiant 1 doit être celui qui a eu la contribution la plus significative au projet.
+//!
+

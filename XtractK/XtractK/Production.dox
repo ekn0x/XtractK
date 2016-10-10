@@ -1,0 +1,60 @@
+/*!
+
+\page production Réalisation d'un nouveau programme
+
+\tableofcontents
+
+\section production_context Mise en contexte
+Il est souvent déconseillé d'utiliser des constantes dans le corps d'un programme. On recommande plutôt l'usage de constantes qui permettent de modififier facilement le comportement du programme sans devoir parcourir tout le code et répéter plusieurs fois les mêmes copies de valeur. 
+
+On vous demande de modifier l'automate d'extraction des commentaires donné pour lui donner une fonctionnalité similaire mais différentes. Cette fois-ci, ce n'est pas les commentaire qu'il faut extraire, mais plutôt les constantes suivantes :
+ - tous les caractères
+ - toutes les chaînes de caractères
+ - toutes les constantes numériques positives et négatives :
+     - entière :
+	    - binaire : `0b01010...` (`b` ou `B` comme 2_e_ caractère)
+		- décimale : `1234...`
+		- octale : `01234...`
+		- hexadecimal : `0x10cafe...` (`x` ou `X` comme 2_e_ caractère - `a`, `b`, `c`, `d`, `e` et `f` peuvent être majuscule aussi)
+     - à points flottants :
+	    - simple : `3.1416f` (f ou F à la fin seulement)
+		- double : `3.141592654`
+		- on ne vous demande pas de gérer les nombres en notation scientifique (`1.23456E-6` par exemple)
+
+Attention, le C++11 apporte une panoplie de nouveautés. On vous demande de gérer uniquement les cas mentionnés ci-haut. De plus, prenez pour acquis que les fichiers qui seront testés seront conforme au langage C++. Il n'est pas question de gérer tous les cas où les constantes sont mal définies.
+
+\section production_constraints Contraintes
+ - Comme l'exemple donné, vous devez afficher le numéro de ligne de la constante et ensuite la valeur de la constante. Aussi, à la fin, vous devez afficher quelques statistiques :
+    - le nombre de lignes
+    - le nombre d'espace
+    - le nombre d'autres caractères
+    - le nombre de commentaires style-C
+    - le nombre de commentaires style-C++
+    - le nombre de constantes de type caractères
+    - le nombre de constantes de type chaînes de caractères
+    - le nombre de constantes de type entière
+    - le nombre de constantes de type point flottant
+ - Vous devez créer un <b>nouveau projet</b> pratiquement identique au projet proposé. La structure et l'approche doit être très similaire à celui donné. Néanmoins, en vous inspirant des éléments XtractC, vous devez créer :
+    - un nouveau filtre `XtractK` dans la solution de _Visual Studio_
+    - une classe `XtractK`
+    - les nouvelles classes de transition si requises
+	- modifier la fonction `main` pour utiliser `XtractK`
+ - Vous devez créer une nouvelle classe de type `AbstractMatchSymbol`. Cette classe doit se nommer `MatchRangeSymbols(symbol_t first, symbol_t last)` et tirer profit du fait que plusieurs caractères sont définis par une suite continue de la table des codes _Ascii_ (de a à z, de A à Z et de 0 à 9).
+ - Vous ne pouvez pas utiliser d'expressions régulières
+ - On vous demande de produire la documentation Doxygen uniquement pour la classe `MatchRangeSymbols`. Le reste de votre code ne requiert pas de documentation spécifique. Néanmoins, une documentation minimum est attendue.
+
+\section production_advice Conseils
+ - L'automate actuel couvre déjà une grande partie du problème. Les commentaires, caractères et chaînes de caractères sont déjà gérés. 
+ - Même si la structure actuelles est bonne, elle doit être modifiée pour que les commentaires ne s'affichent plus et que les caractères et chaînes de caractères s'affichent.
+ - Voici les étapes à considérer : 
+     -# Reprenez le diagramme d'état et produisez votre diagramme en incluant tous les états qui manquent.
+     -# Modifiez l'automate actuel pour qu'il n'affiche plus les commentaires.
+     -# Modifiez l'automate pour qu'il affiche les caractères.
+     -# Modifiez l'automate pour qu'il affiche les chaînes de caractères.
+     -# Ajoutez l'extraction des nombres (remarquez les nombreuses similarités);
+
+\section production_presentation Remise
+Vous devez compresser votre solution sous format _ZIP_ ou _7z_ et la joindre à votre remise. Avant de produire votre fichier compressé, n'oubliez pas de retirer les fichiers de compilation non nécessaires de _Visual Studio_. Au minimum, appuyez sur `Build / Clean solution`.
+
+Finalement, vous devez produire le diagramme d'état de votre conception et l'insérer comme image dans la racine du fichier compressé. Comme l'exemple donné, utilisez le format _PNG_ et une résolution suffisante pour la lecture. Aucun fichier de format _JPG_ ne sera accepté.
+*/

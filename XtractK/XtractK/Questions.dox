@@ -1,0 +1,43 @@
+/*!
+
+\page questions Analyse de la solution et questions à répondre
+
+\tableofcontents
+
+\section questions_analyse Analyse
+L'objectif principal de ce laboratoire est de se familiariser avec les notions de la conception orientée objet et des éléments syntaxiques du C++ par le biais d'une solution existante. Il est donc essentiel que vous preniez le temps nécessaire pour vous approprier le programme donné. Votre analyse doit être rigoureuse auant sur la structure orientée objet que sur les aspects syntaxiques du langage C++.
+
+La documentation générée avec _Doxygen_ et mise à votre disposition est très détaillée. Elle facilite l'anlyse structural du projet ainsi que la navigation dans la documentation des classes.
+
+\section questions_questions Questions à répondre
+Vous devez répondre aux questions suivantes :
+ -# Donnez 2 exemples spécifiques d'où se trouve dans le code chacun des concepts suivants (donnez uniquement le nom du fichier ainsi que le numéro de ligne) :
+	 -# protection des données
+     -# encapsulation
+	 -# héritage
+	 -# polymorphisme
+	 -# un pointeur de classe parent qui pointe vers un objet de classe enfant 
+	 -# un pointeur de classe enfant modifié vers un pointer de classe parent (_typecast_)
+	 -# un pointeur de classe parent modifié vers un pointer de classe enfant (_typecast_)
+ -# Donnez une courte explication du sens qu'ont les mots réservés du langage C++ suivants. De plus, indiquez dans le code où se trouve un exemple concret de votre explication (ne spécifiez que le nom du fichier et le numéro de ligne).
+     -# `delete` (à la fin d'une ligne déclarative d'une fonction membre)
+	 -# `default` (à la fin d'une ligne déclarative d'une fonction membre)
+	 -# `virtual` (au début d'une ligne déclarative d'une fonction membre)
+	 -# `override` (à la fin d'une ligne déclarative d'une fonction membre)
+	 -# `final` (à la fin d'une ligne déclarative d'une fonction membre)
+	 -# `final` (sur la ligne déclarative d'une classe)
+	 -# `friend`
+ -# Le fichier `Symbol.h` possède la définition du type `symbol_t`. Quelle est la pertinence d'avoir ajouté ce `typedef` dans le programme?
+ -# Dans les constructeurs des 2 automates (FSMFileStatistics et FSMCppCommentExtraction), beaucoup de mémoire est allouée dynamiquement et pourtant les destructeurs ne libèrent pas cette mémoire. Y a-t-il une fuite de mémoire (_memory leak_)? Si non, oò se trouve tous les éléments de la solution?
+ -# Dans le programme, nous utilisons deux types d'exception (exceptions de la librairie standard et exceptions créée dans le programme). Nommez toutes les classes d'exception utilisées dans le programme. Qu'ont de particulier les classes créées dans le programme?
+ -# La classe `AbstractBehavioralTransition` possède deux fonctions définies comme étant protégée (`reset` et `process`). Pourtant, les classes `FiniteStateMachine` et `AbstractBehavioralState` accèdent à ces deux fonctions (via ces fonctions : `FiniteStateMachine::processSymbol` et `AbstractBehavioralState::reset`). Comment est-ce possible? Quel est l'avantage de ce "design"?
+ -# Ce programme possède quelques lacunes de "design" et d'implémentation. L'un des aspets les plus important est relié aux fonctions par défaut (copies constructeur et opérateur d'assignation par copie par exemple). Plusieurs classes présentent actuellement cette lacune. La classe Transition en est un très bel exemple. Expiquez quel est le problème pour le seul cas du copie constructeur. Donnez le code source d'un copie constructeur adéquat de cette classe. Si des ajouts externes sont requis, précisez les concepts et comment les réaliser.
+ -# Vous devez produire un diagramme de flux représentant la fonction `FiniteStateMachine::processSymbol` (en incluant toutes les dépendances). De plus, vous devez expliquer dans vos mots quel est le rôle de cette fonction et comment elle y arrive. Ne répétez pas simplement le code en français mais plutôt présentez l'algorithme existant.
+ -# Vous devez produire un diagramme montrant toutes les classes de cette solution (pas les objets). De plus, vous devez indiquer les relations suivantes sur votre diagramme :
+    - héritage (utilisez une flèche de l'enfant vers le parent qui présente : cette classe enfant hérite de cette classe parent)
+    - possède (utilisez une ligne de la classe possesseur vers la classe possédée qui présente : la classe possesseur possède un ou plusieurs objets de la classe possédée - vous devez mettre un cercle plein du côté possesseur)
+    - utilisation (utilisez une ligne de la classe 1 vers la classe 2 sans flèche qui présente : la classe 1 et la classe 2 travaillent ensemble) \n
+	_Nous verrons plus tard comment formaliser ce diagramme qu'on nomme diagramme de classe en UML_
+
+Vous devez produire un document _PDF_ avec toutes vos réponses et le joindre à votre remise.
+*/

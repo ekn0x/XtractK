@@ -1,0 +1,74 @@
+/*!
+
+\page fsm Automate à états finis
+
+\tableofcontents
+
+Un <a href="https://fr.wikipedia.org/wiki/Automate_fini" target="_blank">automate à états finis</a> (AEF) est un modèle mathématique de calcul correspondant à une machine idéalisée représentant un circuit séquentiel. 
+
+Un tel automate possède plusieurs états où l'un est déclaré l'_état initial_ d'où le processus débute. On appel l'_état courant_ une référence vers l'état représentant l'état présent de l'automate. L'_état courant_ est constamment déplacé selon le déroulement du processus. Le passage d'un état à un autre, appelé _transition_. La transition est déterminée par des conditions établies selon chaque état. 
+
+Un automate particulier est défini par la liste de ses états et par les conditions des transitions. Ainsi, un automate possède _n_ états où chacun possède _m_ transitions vers les états liées (_n > 0_ et _m > 0_).
+
+\section fsm_formal_def Définition formelle
+
+Il existe un très grand nombre de définition différente d'un _AEF_. Néanmoins, la définition suivante est plutôt générale et est un bon point de départ.
+
+Un _AEF_ se défini formellement par :
+ 
+<b>Définition 1</b> Un automatie à états finis \f$M\f$ est un 5-uplets \f$(I, S, S_0, A, \delta)\f$, où
+ - \f$I\f$ est l'ensemble des alphabets (ou symboles) d'entrée;
+ - \f$S\f$ est l'ensemble des états de l'automate;
+ - \f$S_0\f$ est l'état initial de l'automate;
+ - \f$A\f$ est un ensemble d'états spéciaux appelé ensemble d'états acceptants : \f$A \subseteq S\f$;
+ - \f$\delta\f$ est la fonction de transition de l'automate
+
+&diams;
+
+<b>Définition 2</b> Soit \f$I^*\f$, l'ensemble de toutes les chaînes de symboles dans \f$I\f$ et \f$w \in I^*\f$. Alors \f$w\f$ est acceptée par \f$M\f$ si et seulement si \f$M\f$ passe dans un état acceptant lorsque \f$w\f$ est l'entrée et que \f$M\f$ est à l'état initial \f$S_0\f$.
+
+&diams;
+
+<b>Définition 3</b> Le langage accepté par \f$M\f$, noté \f$L(M)\f$, est l'ensemble de toutes les chaînes de symboles qui sont acceptées par \f$M\f$.
+
+&diams;
+
+Considérant ces précisions :
+ - Un état acceptant est un état dans lequel la machine déclare que la chaîne d'entrée traitée jusqu'alors appartient au langage qu'elle reconnaît. Ces états permettent de valider si une chaîne de symboles correspond à une chaîne valide. Ils représentent donc des états de sortie valides. 
+ - L'état initial peut être un état acceptant
+ - Supposons que l’entrée est une séquence de symboles. Après chaque entrée, l’\a AEF change d’état. À la fin, l’automate termine son travail dans l’un des états de l’ensemble \a S. Cet état peut être un état acceptant ou non acceptant. Ainis, un \a AEF sépare l’ensemble de toutes les chaînes de symboles en deux sous-ensembles : i) celles qui tombent dans un état acceptant; ii) celles qui ne tombent pas dans un état acceptant.  Les chaînes de symboles qui envoient l’automate dans un état acceptant sont dites chaînes acceptées par l’automate.
+ - La fonction de transition \f$\delta : S \times I \to S\f$ associe le prochain état de l’automate au couple ordonné \f$(S, I)\f$ actuel. Pour chaque état \f$s \in S\f$ et symbole d’entrée \f$i \in I\f$, la fonction \f$\delta(s, i)\f$ indique l’état prochain de l’automate \f$M\f$. En d’autres termes, \f$\delta(s, i)\f$ indique l’état suivant de l’automate \f$M\f$ si son entrée est \f$i\f$ et s’il se trouve dans l’état \f$s\f$.
+ - Une fonction d’états éventuels \f$\delta^* : S \times I^* \to S\f$ est une fonction qui donne le prochain état de l’automate pour une chaîne d’entrée. Par exemple, pour l’automate illustré aux figures 1 et 2 (voir plus bas), \f$\delta(s_1, babba) = s_1\f$ puisque selon la description du digramme (ou table) de transitions nous avons : 
+\image html Exemple_FonctionsEtatsEventuels.png
+Ainsi, on peut représenter mathématiquement une chaîne de symboles acceptés par un automate \f$M\f$ avec :\n
+\f$L(M) = \{ w \in I^* | \delta^*(s_0, w) \text{ est un état acceptant de } M \}\f$ \n
+Finalement, \f$w \text{ étant accepté par } M \iff \delta^*(s_0, w) \text{ est un état acceptant de } M\f$.
+
+\section fsm_representation Représentation
+On représente un \a AEF par un diagramme de transition ou par une table de transitions. 
+
+Le diagramme de transition a l’avantage de montrer explicitement les transitions de l’automate. La \a Figure 1 donne un exemple d’un diagramme de transitions. Ce diagramme est identique à ceux utilisés dans la logique synchrone des circuits numériques. À noter que la flèche entrante indique l'état initial et que les états acceptants sont illustrés par deux cercles.
+\image html Exemple_FSM_Diagramme.png "Figure 1 : Diagramme de transition d'un AEF"
+
+La table de transitions permet d'illustrer différemment les mêmes informations. Sous forme tabulaire, l’état initial est indiqué par une flèche entrant (vers la droite) alors que les états acceptants sont illustrés par une flèche sortant (vers la gauche).
+\image html Exemple_FSM_TableTransition.png "Figure 2 : Table de transitions d'un AEF"
+
+Les figures 1 et 2 illustrent le même exemple. Considérant cet exemple, l’automate accepte comme chaîne ab, bab, baab, aab, ... En effet, dès qu’une chaîne se termine en ab, elle est acceptée par l’automate. La raison est que l’état acceptant \f$s_2\f$ est atteint par un seul et uniquement chemin.
+
+\section fsm_example Example
+... insérer un exemple ici ... à faire ...
+
+\section fsm_behavioral Automate comportemental
+Un automate comportemental à états-finis (_ACEF_) permet la définition de tâches spécifiques à différents moments du processus. Pour cet énoncé, on retiendra la définition usuelle suivante :
+ - <b>état</b> : on ajoute trois tâches optionnelles :
+     - entrant : lorsque une transition est terminée et qu'un nouvel état est déclaré _état courant_, alors cette tâche est exécutée;
+	 - traitement : pour l'_état courant_, cette tâche est exécutée soit :
+	     - en mode synchrone (à chaque traitement de nouveau symbole et qu'il n'y a pas de transition);
+		 - en mode asynchrone (avec une boucle interne indépendante du traitement de l'automate);
+	 - sortant : avant qu'une transition soit terminée et exécuté, alors cette tâche est exécutée.
+ - <b>transition</b>, on ajoute une tâche optionnelle :
+	 - traitement : lorsque la transition s'applique, la tâche spécifiée est exécutée.
+
+\image html Diagramme_ACEF.png "Exemple de diagramme utilisé pour illustré un ACEF"
+
+*/

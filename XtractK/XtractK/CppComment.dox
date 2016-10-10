@@ -1,0 +1,76 @@
+/*!
+
+\page comments Les commentaires en C++
+
+\tableofcontents
+
+\section comments_intro Concept et usage
+Dans tous les langages de programmation, les commentaires servent à produire une documentation à l'intérieur du code source. 
+Il existe plusieurs raisons poussant les développeurs à produire des commentaires :
+- <b>Planification et révision</b>\n
+Les commentaires peuvent être utilisés en tant que pseudocode afin d'indiquer les intentions initiales concernant le code. Dans ce cas, on explique la logique initiale plutôt que le code produit. Cette stratégie permet de simplifier le processus de révision en comparant le code produit selon les intentions initiales. 
+- <b>Description du code</b>\n
+Les commentaires présentent des aspects complémentaires au code documenté. Il est de mauvaise pratique que de répéter simplement la logique du code produit. On tente plutôt d'expliquer les intentions avec des précisions sur différents aspects. Par exemple, il est fréquent de mettre l'emphase sur ces éléments comme :
+	- usage adéquat d'une fonction, d'une classe, d'une bibliothèque;
+	- précision sur les conditions pré opératoire et post opératoire;
+	- présenter les limitations de la solution;
+	- correctifs à apporter;
+	- correction de bug;
+- <b>Description algorithmique</b>\n
+Certaines portions de code peuvent contenir une stratégies élaborées justifiant des explications supplémentaires. Certains développements algorithmes plus complexes ou plus sophistiqués nécessitent un effort de réflexion qu'il est important de documenter. Trop souvent, les commentaires laissés dans le code sont la seule documentation de ces travaux. À titre d'exemple, on peut retrouver :
+	- des diagrammes explicatifs (diagramme de flux, séquentiel, UML, automate à états finis, ...);
+	- des démonstrations mathématiques;
+	- une explication détaillée du raisonnement mis en place;
+	- une justification concernant certains choix technologiques;
+	- une justification de stratégie d'optimisation ;
+	- une justification d'une approche plutôt que d'une autre;
+	- les sources liées au travail réalisé
+- <b>Métadonné sur le fichier</b>\n
+Il fréquent d'ajouter une panoplie d'information complémentaire sur les fichiers sources. Voici quelques éléments qu'il est pertinent de trouver :
+	- sommaire
+	- description détaillée du fichier
+	- auteurs
+	- version
+	- dates de création et de dernière révision
+	- historique des révisions
+	- droits et licence
+	- dépendances
+	- sources liées au développement
+- <b>Débugage</b>\n	
+Il est aussi commun d'ajouter des informations de débogage ou même de mettre en commentaire des portions de code qui ont servi pour le déverminage.
+
+Les commentaires produits dans le code source est ignoré par le compilateur. Ils sont destiné uniquement au lecteur humain afin d'avoir plus d'information sur le développement réalisé.  Lors de la compilation, la troisième phase de traduction (_translation phase 3_) substitue tous les commentaires du code source  par un caractère d'espacement.
+	
+\section comments_cpp Syntaxe des commentaires du langage C++
+Il existe deux types de commentaires en C++ :
+- commentaire de bloc (aussi appelé commentaire _style-C_ ou commentaire multi-ligne) - ces commentaires débutent par une barre oblique suivi par un astérisque et se terminent par un astérisque suivi par une barre oblique \code{.cpp}/* commentaire */\endcode
+- commentaire de fin de ligne (aussi appelé commentaire _style-C++_ ou commentaire de ligne) - ces commentaires sont définis par deux barres obliques et se terminent par un saut de ligne \code{.cpp}// commentaire\endcode
+
+Le multi-ligne offre des possibilités supplémentaires aux commentaires de fin de ligne mais présentent aussi quelques limitationsé Voir \ref multiline.
+
+\section comment_examples Exemples
+\code{.cpp}
+/* Un commentaire de bloc sur une ligne */
+int a{ 0 };
+
+/********************************
+* Un commentaire de bloc sur 
+* plusieurs lignes 
+* ******************************/
+int b{ 0 };
+
+/* au début */ int f1(int v);
+int f2(int v /* au centre */ );
+int f3(int v); /* à la fin */
+
+// Un commentaire de fin de ligne sur une ligne entière
+int c{ 0 };
+
+int d{ 0 }; // Un commentaire de fin de ligne en fin de ligne
+
+// Un commentaire de fin de ligne \
+		utilisant le multi-ligne
+int e{ 0 };
+\endcode
+
+*/

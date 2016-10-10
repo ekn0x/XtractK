@@ -1,0 +1,54 @@
+/*!
+
+\page multiline Le multi-ligne en C++
+
+\tableofcontents
+
+\section multiline_intro Concept, usage et déclaration
+Comme son nom l'indique, le multi-ligne permet de créer une ligne de code répartie sur plusieurs lignes. Cette possibilité n'est pas réservée à des portions de code spécifiques et n'est pas soumise à des règles supplémentaires. Son usage est permis partout où le programmeur le juge pertinent. Néanmoins, le mécanisme mis en place produit quelques limitations importantes qu'il faut connaître pour bien l'utiliser. 
+
+La déclaration du multi-ligne se fait en terminant une ligne avec le caractère barre oblique inverse (\\) suivi immédiatement par un saut de ligne (sans espace).
+
+L'avantage de cette technique est qu'elle rend possible l'écriture de code plus facile à lire en le distribuant sur plusieurs lignes. Par exemple, seul le multi-ligne rend l'écriture de macro possible sur plusieurs lignes.
+
+\code{.cpp}
+// Une macro
+#define max(a, b)					\  
+					(a) > (b) ? 	\ 
+					(a) : 			\ 
+					(b)
+					
+// une déclaration avec initialisation
+char text[] = "Chaîne de caractères \
+				très très longue!";
+			
+// un commentaire de fin de ligne	\ 
+		qui en fait se présente		\ 
+		sur plusieurs lignes
+\endcode
+
+\section multiline_mechanism Mécanisme
+Tous les fichiers sources sont traduit par le compilateur en 9 phases distinctes. Les premières phases de traduction permettent de conditionner les différents fichiers afin de produire des entrées uniformes au compilateur. L'une des tâches de la phase 2 est de retirer toutes les indications de multi-ligne en substituant par un espace la déclaration (les caractères barre oblique inverse et saut de ligne).
+ 
+\section multiline_limitation Limitations
+Il existe plusieurs situations où le multi-ligne n'est pas possible. En fait, tous les mots réservés et caractères de contrôle du langage C/C++ ne peuvent être _coupés_ au centre par le multi-ligne. Par exemple, les trois doublets servant de caractères de contrôle pour les commentaires ne peuvent avoir une déclaration multi-ligne au centre.
+
+\code{.cpp}
+// déclaration invalide d'une boucle
+wh/
+ile (i < 10) ++i;
+
+/\  
+/ 	un commentaire invalide sur deux lignes
+
+/\ 
+* * encore un commentaire invalide
+*/
+
+/*
+	toujours un commentaire invalide
+*\
+/
+\endcode
+
+*/

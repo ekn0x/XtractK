@@ -1,0 +1,48 @@
+/*!
+
+\page cpp_comment_extraction Stratégie d'extraction des commentaires en C++
+
+\tableofcontents
+
+\section Introduction
+Tel que présenté, l'extraction des commentaires contenus dans les fichiers source est unt tâche pertinente et nécessaire dans plusieurs situations. 
+
+Pour ce laboratoire, un _ACEF_ (voir \ref fsm_behavioral) est réalisé afin de détecter la présence des commentaires de style C et C++. Suite aux lectures d'introduction, on note plusieurs défis :
+ - les règles syntaxiques associés aux deux types de commentaires :
+      - par bloc;
+	  - de fin de ligne;
+ - le méta-caractère barre oblique inverse `\n` servant à indiquer :
+      - les caractères spéciaux dans un caractère et une chaîne de caractère;
+	  - un saut de ligne permettant le multi-lignes (rappelons-nous que ce caractère indique au pré-processeur du compilateur de substituer le saut de ligne par un espace; ainsi, on peut considérer le traitement des caractères de la ligne suivante comme faisant partie de la ligne courante);
+ - la gestion du saut de ligne dans les fichiers texte (`\n`);
+ - les caractères;
+ - les chaînes de caractères.
+
+Considérant toutes ces contraintes, la tâche d'extraction n'est pas triviale et une analyse détaillée permet de relever les nombreux défis existants. Au lieu d’extraire les commentaires d’une manière intuitive, nous allons procéder systématiquement à leur détection. Une façon efficace pour réaliser cette tâche est l’utilisation d’un automate à états finis (_AEF_). Dans notre contexte, les caractères du fichier source sont considérés comme des symboles d’entrée de l’automate. L’automate se mettra dans des états prédéterminés selon le symbole d’entrée reçu. De cette façon, nous pouvons facilement traiter tous les styles de commentaires rencontrés.
+
+Le schéma suivant montre le diagramme de transition développé. Voici <a href="DiagrammeDEtats_ExtractionCommentairesCpp.png" target="_blank">le lien</a> pour télécharger l'image en pleine résolution.
+
+\image html DiagrammeDEtats_ExtractionCommentairesCpp.png "Extraction des commentaires en C++"
+
+En pratique, la conception de l’AEF implique également des états supplémentaires qui peuvent être utiles lors de l’ajout de nouvelles capacités à l’automate. C’est pour cette raison que certains états et certaines transitions ne sont pas vraiment utilisés. 
+
+Le diagramme de transitions donné plus haut montre plusieurs éléments :
+ - Deux automates ont été développés :
+     -# le premier, à gauche, sert exclusivement à extraire certaines statistiques concernant le fichier :
+	      - le nombre de ligne;
+	      - le nombre d'espace;
+	      - le nombre de caractères;
+	 -# le second, à droite, est celui développé pour l'extraction des commentaires.
+ - Le cercle indique le point d'entrée du système et pointe vers les deux états initiaux pour chacun des automates.
+ - Chaque rectangle indique un état :
+     - un double rectangle indique un état acceptant;
+	 - le nom est celui de l'objet du code source.
+ - Chaque flèche indique une transition. Chacune des flèches indique plusieurs informations fondamentales à comprendre :
+     - entre accolade se trouve la condition de transition, par exemple `{ a }` indique que le caractère `a` est le symbole de transition;
+	 - au dessus se trouve le nom de l'objet correspondant dans le code source;
+	 - un code de couleur et de type de ligne montrent les classes utilisées pour chacun des objets existants - il existe 7 classes différentes.
+ - Au bas de l'image se trouve une légende détaillée expliquant tous les aspets du schéma. 
+ 
+<b>Avant de poursuivre le laboratoire, il est essentiel de bien se familiariser avec ce schéma et de toutes ses ramifications.</b>
+
+*/

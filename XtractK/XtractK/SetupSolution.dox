@@ -1,0 +1,185 @@
+/*!
+
+\page setup_solution Mise en place de la solution
+
+\tableofcontents
+
+\section setup_solution_intro Introduction
+Pour ce laboratoire, l'utilisation de _Visual Studio_ est recommandé mais pas absolument nécessaire. L'étudiant désirant mettre en place le projet avec un autre _IDE_ peut le réaliser. Néanmoins, il est responsable de faire fonctionner son projet de façon autonome. Il ne peut s'attendre à obtenir du support ni pour l'installation, la configuration et l'exécution. De plus, il est possible que certaines parties du code source ne compile pas sur d'autres compilateurs et, même si ces modifications sont mineures, c'est l'étudiant qui devra les réaliser.
+
+Les instructions de mise en place sont faites pour _Visual Studio 2015 Community Edition_ (en anglais). Si l'étudiant utilise une autre version (2013 est la plus ancienne acceptée), l'étudiants doit trouver les équivalents si nécessaire.
+
+La mise en place se fait par 8 manipulations qui doivent être réalisées dans l'ordre :
+ -# Création d'un projet vide avec _Visual Studio_
+ -# Création d'une arborescence de dossiers sur le disque
+ -# Copie des fichiers donnés dans l'arborescence de dossiers
+ -# Création d'une arborescence de filtres dans _Visual Studio_
+ -# Insertion des fichiers dans la solution et disposition dans les bons filtres
+ -# Configuration du projet dans _Visual Studio_
+ -# Mise en place des outils de documentation automatique
+ -# Valider l'installation
+
+\section setup_solution_manip Manipulations
+
+\subsection setup_solution_manip_1 Création d'un projet vide avec Visual Studio
+ -# Démarrer _Visual Studio_. 
+ -# Si c'est votre premier démarrage, assurez-vous de sélectionner C++ comme collection de paramètres par défaut. Si le logiciel a déjà été démaré sans le langage C++, suivez les intructions suivantes :
+     -# Menu : `Tools / Import and Export Settings...`
+     -# Sélectionnez : `Reset All Settings`
+	 -# Appuyez sur suivant
+	 -# Selon vos besoins, sauvegardez ou non la configuration courante
+	 -# Appuyez sur suivant
+	 -# Choisissez `C++` et `Terminé`
+ -# Menu : `File / New / Project...`
+ -# Dans le groupe : `Templates / Visual C++`
+ -# Choisissez : `Win32 Console Application`
+ -# Définissez le nom du projet : `XtractC`
+ -# Définissez un dossier de travail : _votre dossier - prenez en note le nom de ce dossier, il sera référencé à plusieurs endroits sous le nom : dir_
+ -# Définissez le nom de la solution : `XtractC`
+ -# Appuyez sur Ok
+ -# Sur la fenêtre de bienvenue, appuyer sur `Suivant`
+ -# Sélectionnez les options suivantes :
+      - `Application type : Console application`
+	  - `Additionnal options : Empty projet`
+ -# Appuyer sur `Terminé`
+
+\subsection setup_solution_manip_2 Création d'une arborescence de dossiers sur le disque
+À l'aide de l'`Explorateur Windows`, créez l'arborescence de dossiers suivants à partir du dossier initial de projet (_dir_). Ne créez que les dossiers manquants, ignorez les dossiers supplémentaires existants s'il y en a.
+ - _dir_
+    - `XtractC`
+	   - `XtractC`
+	      - `doc`
+		     - `css`
+			 - `generated`
+			 - `images`
+			 - `source`
+		  - `tests`
+		     - results
+		  - `tools` 
+
+\subsection setup_solution_manip_3 Copie des fichiers donnés dans l'arborescence de dossiers
+Le fichier compressé `zip` donné contient un grand nombre de fichiers qu'il faut copier dans les dossiers appropriés. Encore une fois, ne copiez que les fichiers spécifiés, ignorez les fichiers supplémentaires existants s'il y en a. Pour faciliter la lecture, les fichiers sont indiqués entre crochets `[]`.
+ - _dir_
+    - `XtractC`
+	   - `XtractC`
+	      - `doc`
+		     - `css`
+			    - [ `XtractC.css` ]
+			 - `generated`
+			 - `images`
+			    - [ `*.png` ]
+			 - `source`
+			    - [ `*.dox` ]
+		  - `tests`
+		     - results
+			 - [ `sstream` ]
+			 - [ `*.txt` ]
+			 - [ `Test_CppComments.cpp` ]
+		  - `tools` 
+		  - [ `*.h` ]
+		  - [ `*.cpp` sauf `Test_CppComments.cpp` ]
+
+\subsection setup_solution_manip_4 Création d'une arborescence de filtres dans Visual Studio
+Dans le volet _Explorateur de solution_ de _Visual Studio_, créez l'arborescence de filtres suivants. Ne créez que les filtres manquants, ignorez les filtres supplémentaires existants s'il y en a. Pour créer un filtre, placer la souris au dessus du filtre parent et, à l'aide du menu contextuel, appuyez sur : `Add / New Filter`.
+ - `Solution XtractC`
+    - `XtractC`
+	   - `Header Files`
+          - `Finite State Machine`
+             - `State`
+             - `Symbol`
+             - `Transition`
+          - `XtractC`
+       - `Ressource Files`
+          - `doc`
+	   - `Source Files`
+          - `Finite State Machine`
+             - `State`
+             - `Symbol`
+             - `Transition`
+          - `XtractC`
+	   - `Tools`
+
+\subsection setup_solution_manip_5 Insertion des fichiers dans la solution et disposition dans les bons filtres
+Ajoutez maintenant tous les fichiers du projet dans _Visual Studio_. En déplaçant la souris sur chaque filtre, appuyez sur `Add / Existing Item...`. Encore une fois, les fichiers sont indiqués entre crochets `[]` pour faciliter la lecture.
+ - `Solution XtractC`
+    - `XtractC`
+	   - `Header Files`
+          - `Finite State Solution`
+             - `State`
+			    - [ `AbstractBehavioralState.h` ]
+			    - [ `State.h` ]
+			    - [ `StateCounter.h` ]
+             - `Symbol`
+			    - [ `AbstractMatchSymbol.h` ]
+			    - [ `MatchAllSymbols.h` ]
+			    - [ `MatchListSymbols.h` ]
+			    - [ `MatchNotListSymbols.h` ]
+			    - [ `MatchSingleSymbols.h` ]
+			    - [ `MatchNotSingleSymbols.h` ]
+             - `Transition`
+			    - [ `AbstractBehavioralTransition.h` ]
+			    - [ `Transition.h` ]
+			    - [ `TransitionCounter.h` ]
+			    - [ `TransitionOStream.h` ]
+             - [ `FiniteStateMachine.h` ]
+          - `XtractC`
+             - [ `FSMFileStatistics.h` ]
+             - [ `FSMCppCommentExtraction.h` ]
+             - [ `TransitionBackToComment.h` ]
+             - [ `TransitionExitingCppStyle.h` ]
+             - [ `TransitionExitingCStyle.h` ]
+             - [ `TransitionInComment.h` ]
+             - [ `TransitionNewComment.h` ]
+             - [ `XtractC.h` ]
+       - `Ressource Files`
+          - `doc`
+             - [ *.dox ]
+	   - `Source Files`
+          - `Finite State Solution`
+             - `State`
+			    - [ `AbstractBehavioralState.cpp` ]
+			    - [ `State.cpp` ]
+			    - [ `StateCounter.cpp` ]
+             - `Symbol`
+			    - [ `AbstractMatchSymbol.cpp` ]
+			    - [ `MatchAllSymbols.cpp` ]
+			    - [ `MatchListSymbols.cpp` ]
+			    - [ `MatchNotListSymbols.cpp` ]
+			    - [ `MatchSingleSymbols.cpp` ]
+			    - [ `MatchNotSingleSymbols.cpp` ]
+             - `Transition`
+			    - [ `AbstractBehavioralTransition.cpp` ]
+			    - [ `Transition.cpp` ]
+			    - [ `TransitionCounter.cpp` ]
+			    - [ `TransitionOStream.cpp` ]
+             - [ `FiniteStateMachine.cpp` ]
+          - `XtractC`
+             - [ `FSMFileStatistics.cpp` ]
+             - [ `FSMCppCommentExtraction.cpp` ]
+             - [ `TransitionBackToComment.cpp` ]
+             - [ `TransitionExitingCppStyle.cpp` ]
+             - [ `TransitionExitingCStyle.cpp` ]
+             - [ `TransitionInComment.cpp` ]
+             - [ `TransitionNewComment.cpp` ]
+             - [ `XtractC.cpp` ]
+          - [ `main.cpp` ]
+	   - `Tools`
+
+\subsection setup_solution_manip_6 Configuration du projet dans Visual Studio
+Voici quelques éléments de configuration pertinents :
+ - Lors de l'exécution du projet en mode _Debug_ ou _Release_, il est possible de préciser des arguments passés au programme. En fait, puisque le programme est conçu pour prendre ses paramètres d'entrée par les arguments de la ligne de commande, il est nécessaire de spécifier ces options ici. Si on exécute le programme sans ce paramètre, rien ne sera traité. Voici les étapes à suivre :
+    - Menu : `Project / Xtract Properties...`
+	- Spécifiez : `Configuration / All configurations`
+	- Ajouter les paramètres que vous désirez passer dans l'option : `Configuration Properties / Debugging / Command Arguments`
+	- Par exemple :
+	   - si vous désirez analyser le fichier `Test_CppComments.cpp` et afficher les résultats dans la console, spécifier ce paramètre : `tests/Test_CppComments.cpp`
+	   - si vous désirez analyser le fichier `Test_CppComments.cpp` et produire le fichier de sortie `results/Test_CppComments.txt`, spécifier ce paramètre : `tests/Test_CppComments.cpp tests/results/Test_CppComments.txt`
+
+\subsection setup_solution_manip_7 Mise en place des outils de documentation automatique
+Voir \ref doxygen
+
+\subsection setup_solution_manip_8 Valider l'installation
+ - D'abord, assurez-vous que vous êtes capable de compiler l'application.
+ - Ensuite, testez l'application avec différents arguments (entrée et sortie). Le dossiers tests contient plusieurs fichiers que vous pouvez essayer. Validez que le programme réussi bien la tâche demandée.
+
+*/
