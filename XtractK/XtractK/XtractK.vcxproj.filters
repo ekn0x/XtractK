@@ -144,6 +144,9 @@
     <ClInclude Include="TransitionKChar.h">
       <Filter>Header Files\XtractK\Transition</Filter>
     </ClInclude>
+    <ClInclude Include="TransitionExitK.h">
+      <Filter>Header Files\XtractK\Transition</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -231,6 +234,9 @@
       <Filter>Source Files\XtractK\Transition</Filter>
     </ClCompile>
     <ClCompile Include="TransitionKChar.cpp">
+      <Filter>Source Files\XtractK\Transition</Filter>
+    </ClCompile>
+    <ClCompile Include="TransitionExitK.cpp">
       <Filter>Source Files\XtractK\Transition</Filter>
     </ClCompile>
   </ItemGroup>

@@ -39,6 +39,7 @@ class TransitionExitingCppStyle;
 
 class TransitionExitEscape;
 class TransitionKChar;
+class TransitionExitK;
 
 //! \brief		Automate dédié à l'extraction des commentaires d'
 //!				un fichier du langage C/C++.
@@ -119,13 +120,13 @@ private:
 	TransitionBackToComment * tExitEscapeCharComCppStyle;
 
 	TransitionCounter * tEnterString;
-	Transition * tExitString;
+	TransitionExitK * tExitString;
 	Transition * tEnterEscapeCharString;
 	TransitionExitEscape * tExitEscapeCharString;
 	TransitionKChar * tHoldString;
 
 	TransitionCounter * tEnterCharacter;
-	Transition * tExitCharacter;
+	TransitionExitK * tExitCharacter;
 	Transition * tEnterEscapeCharCharacter;
 	TransitionExitEscape * tExitEscapeCharCharacter;
 	TransitionKChar * tHoldChar;
