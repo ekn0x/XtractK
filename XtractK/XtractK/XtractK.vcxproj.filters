@@ -221,5 +221,11 @@
     <ClCompile Include="TransitionNewConstant.cpp">
       <Filter>Source Files\XtractK\Transition</Filter>
     </ClCompile>
+    <ClCompile Include="TransitionExitEscape.h">
+      <Filter>Header Files\XtractK\Transition</Filter>
+    </ClCompile>
+    <ClCompile Include="TransitionExitEscape.cpp">
+      <Filter>Source Files\XtractK\Transition</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

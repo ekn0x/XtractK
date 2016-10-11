@@ -65,6 +65,8 @@
     <ClCompile Include="Transition.cpp" />
     <ClCompile Include="TransitionBackToComment.cpp" />
     <ClCompile Include="TransitionCounter.cpp" />
+    <ClCompile Include="TransitionExitEscape.cpp" />
+    <ClCompile Include="TransitionExitEscape.h" />
     <ClCompile Include="TransitionExitingCppStyle.cpp" />
     <ClCompile Include="TransitionExitingCStyle.cpp" />
     <ClCompile Include="TransitionInComment.cpp" />

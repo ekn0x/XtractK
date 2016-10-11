@@ -19,6 +19,8 @@
 #include "TransitionExitingCStyle.h"
 #include "TransitionExitingCppStyle.h"
 
+#include "TransitionExitEscape.h"
+
 #include "MatchAllSymbols.h"
 #include "MatchSingleSymbol.h"
 #include "MatchNotSingleSymbol.h"
@@ -60,12 +62,12 @@ FSMCppConstantExtraction::FSMCppConstantExtraction(FSMFileStatistics const & mFi
 	tEnterString = new TransitionCounter("EnterString", new MatchSingleSymbol('"'), sString);
 	tExitString = new Transition("ExitString", new MatchListSymbols({ '"', '\n' }), sCode);
 	tEnterEscapeCharString = new Transition("EnterEscapeCharString", new MatchSingleSymbol('\\'), sStringEscapeChar);
-	tExitEscapeCharString = new Transition("ExitEscapeCharString", new MatchAllSymbols(), sString);
+	tExitEscapeCharString = new TransitionExitEscape("ExitEscapeCharString", new MatchAllSymbols(), sString);
 
 	tEnterCharacter = new TransitionCounter("EnterCharacter", new MatchSingleSymbol('\''), sString);
 	tExitCharacter = new Transition("ExitCharacter", new MatchListSymbols({ '\'', '\n' }), sCode);
 	tEnterEscapeCharCharacter = new Transition("EnterEscapeCharCharacter", new MatchSingleSymbol('\\'), sCharacterEscapeChar);
-	tExitEscapeCharCharacter = new Transition("ExitEscapeCharCharacter", new MatchAllSymbols(), sCharacter);
+	tExitEscapeCharCharacter = new TransitionExitEscape("ExitEscapeCharCharacter", new MatchAllSymbols(), sCharacter);
 
 	// Add transitions to states
 	sCode->addTransition(tEnterSlash);

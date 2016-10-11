@@ -31,11 +31,13 @@ class State;
 class Transition;
 class TransitionCounter;
 class TransitionNewComment;
+class TransitionNewConstant;
 class TransitionInComment;
 class TransitionBackToComment;
 class TransitionExitingCStyle;
 class TransitionExitingCppStyle;
 
+class TransitionExitEscape;
 
 //! \brief		Automate dédié à l'extraction des commentaires d'
 //!				un fichier du langage C/C++.
@@ -118,12 +120,12 @@ private:
 	TransitionCounter * tEnterString;
 	Transition * tExitString;
 	Transition * tEnterEscapeCharString;
-	Transition * tExitEscapeCharString;
+	TransitionExitEscape * tExitEscapeCharString;
 
 	TransitionCounter * tEnterCharacter;
 	Transition * tExitCharacter;
 	Transition * tEnterEscapeCharCharacter;
-	Transition * tExitEscapeCharCharacter;
+	TransitionExitEscape * tExitEscapeCharCharacter;
 
 };
 
