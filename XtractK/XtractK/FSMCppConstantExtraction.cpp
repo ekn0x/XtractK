@@ -20,6 +20,7 @@
 #include "TransitionExitingCppStyle.h"
 
 #include "TransitionExitEscape.h"
+#include "TransitionKChar.H"
 
 #include "MatchAllSymbols.h"
 #include "MatchSingleSymbol.h"
@@ -63,11 +64,13 @@ FSMCppConstantExtraction::FSMCppConstantExtraction(FSMFileStatistics const & mFi
 	tExitString = new Transition("ExitString", new MatchListSymbols({ '"', '\n' }), sCode);
 	tEnterEscapeCharString = new Transition("EnterEscapeCharString", new MatchSingleSymbol('\\'), sStringEscapeChar);
 	tExitEscapeCharString = new TransitionExitEscape("ExitEscapeCharString", new MatchAllSymbols(), sString);
+	tHoldString = new TransitionKChar("HoldStringConstant", new MatchAllSymbols(), sString);
 
-	tEnterCharacter = new TransitionCounter("EnterCharacter", new MatchSingleSymbol('\''), sString);
+	tEnterCharacter = new TransitionCounter("EnterCharacter", new MatchSingleSymbol('\''), sCharacter);
 	tExitCharacter = new Transition("ExitCharacter", new MatchListSymbols({ '\'', '\n' }), sCode);
 	tEnterEscapeCharCharacter = new Transition("EnterEscapeCharCharacter", new MatchSingleSymbol('\\'), sCharacterEscapeChar);
 	tExitEscapeCharCharacter = new TransitionExitEscape("ExitEscapeCharCharacter", new MatchAllSymbols(), sCharacter);
+	tHoldChar = new TransitionKChar("HoldCharConstant", new MatchAllSymbols(), sCharacter);
 
 	// Add transitions to states
 	sCode->addTransition(tEnterSlash);
@@ -92,10 +95,12 @@ FSMCppConstantExtraction::FSMCppConstantExtraction(FSMFileStatistics const & mFi
 
 	sString->addTransition(tExitString);
 	sString->addTransition(tEnterEscapeCharString);
+	sString->addTransition(tHoldString);
 	sStringEscapeChar->addTransition(tExitEscapeCharString);
 
 	sCharacter->addTransition(tExitCharacter);
 	sCharacter->addTransition(tEnterEscapeCharCharacter);
+	sCharacter->addTransition(tHoldChar);
 	sCharacterEscapeChar->addTransition(tExitEscapeCharCharacter);
 
 	// Add states to FSM
