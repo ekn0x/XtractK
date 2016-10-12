@@ -62,6 +62,7 @@
     <ClCompile Include="MatchListSymbols.cpp" />
     <ClCompile Include="MatchNotListSymbols.cpp" />
     <ClCompile Include="MatchNotSingleSymbol.cpp" />
+    <ClCompile Include="MatchRangeSymbols.cpp" />
     <ClCompile Include="MatchSingleSymbol.cpp" />
     <ClCompile Include="State.cpp" />
     <ClCompile Include="StateCounter.cpp" />

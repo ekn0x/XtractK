@@ -242,5 +242,8 @@
     <ClCompile Include="TransitionExitK.cpp">
       <Filter>Source Files\XtractK\Transition</Filter>
     </ClCompile>
+    <ClCompile Include="MatchRangeSymbols.cpp">
+      <Filter>Source Files\Finite State Machine\Symbol</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
