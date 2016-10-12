@@ -1,6 +1,6 @@
-//! \file MatchRangeSymbols.h
+//! \file MatchListRangesSymbols.h
 //!
-//! \brief Définition de la classe MatchRangeSymbols.
+//! \brief Définition de la classe MatchListRangeSymbols.
 //!
 //! \version 1.0
 //!
@@ -11,22 +11,24 @@
 //!		École de technologie supérieure\n
 //!
 
-#ifndef MATCH_RANGE_SYMBOLS_H
-#define MATCH_RANGE_SYMBOLS_H
+#ifndef MATCH_LIST_RANGES_SYMBOLS_H
+#define MATCH_LIST_RANGES_SYMBOLS_H
 
-#include "AbstractMatchSymbol.h"
+#include "MatchRangeSymbols.h"
+#include <list>
+#include <initializer_list>
 
 using namespace std;
 
-class MatchRangeSymbols : public AbstractMatchSymbol
+class MatchListRangesSymbols : public AbstractMatchSymbol
 {
 public:
-	MatchRangeSymbols() = delete;
+	MatchListRangesSymbols() = delete;
 	//! Ce constructeur utilise une suite de symboles.
 	//!	Les symboles de debut et de fin ne peuvent être modifiés par la suite. 
-	MatchRangeSymbols(symbol_t const first, symbol_t const last);
+	MatchListRangesSymbols(symbol_t const first, symbol_t const last);
 	//! Destructeur.
-	virtual ~MatchRangeSymbols() = default;
+	virtual ~MatchListRangesSymbols() = default;
 
 	//! La fonction d'acceptation fait une comparaison du symbole et 
 	//!	retourne vrai si ce dernier est inclu dans la suite de symboles
@@ -38,8 +40,7 @@ public:
 	virtual AbstractMatchSymbol* clone() const override;
 
 protected:
-	symbol_t mFirst;
-	symbol_t mLast;
+	list<MatchRangeSymbols> mRangeList;
 };
 
 #endif

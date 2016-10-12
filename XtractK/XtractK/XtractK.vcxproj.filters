@@ -150,6 +150,9 @@
     <ClInclude Include="MatchRangeSymbols.h">
       <Filter>Header Files\Finite State Machine\Symbol</Filter>
     </ClInclude>
+    <ClInclude Include="MatchListRangesSymbols.h">
+      <Filter>Header Files\Finite State Machine\Symbol</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -243,6 +246,9 @@
       <Filter>Source Files\XtractK\Transition</Filter>
     </ClCompile>
     <ClCompile Include="MatchRangeSymbols.cpp">
+      <Filter>Source Files\Finite State Machine\Symbol</Filter>
+    </ClCompile>
+    <ClCompile Include="MatchListRangesSymbols.cpp">
       <Filter>Source Files\Finite State Machine\Symbol</Filter>
     </ClCompile>
   </ItemGroup>
