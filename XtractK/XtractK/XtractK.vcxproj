@@ -30,6 +30,7 @@
     <ClInclude Include="MatchListSymbols.h" />
     <ClInclude Include="MatchNotListSymbols.h" />
     <ClInclude Include="MatchNotSingleSymbol.h" />
+    <ClInclude Include="MatchRangeSymbols.h" />
     <ClInclude Include="MatchSingleSymbol.h" />
     <ClInclude Include="State.h" />
     <ClInclude Include="StateCounter.h" />

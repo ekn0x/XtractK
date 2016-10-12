@@ -13,8 +13,3 @@ void TransitionExitEscape::process(symbol_t prevSymbol, symbol_t curSymbol)
 
 	*mStream << prevSymbol << curSymbol;
 }
-
-
-
-
-

@@ -147,6 +147,9 @@
     <ClInclude Include="TransitionExitK.h">
       <Filter>Header Files\XtractK\Transition</Filter>
     </ClInclude>
+    <ClInclude Include="MatchRangeSymbols.h">
+      <Filter>Header Files\Finite State Machine\Symbol</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">

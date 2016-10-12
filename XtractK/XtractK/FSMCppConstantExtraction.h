@@ -102,6 +102,15 @@ private:
 	State * sStringEscapeChar;
 	State * sCharacter;
 	State * sCharacterEscapeChar;
+	State * sInteger;
+	State * sMinus;
+	State * sDouble;
+	State * sFloat;
+	State * sZero;
+	State * sOctal;
+	State * sBinary;
+	State * sHexa;
+
 
 	Transition * tEnterSlash;
 	Transition * tCancelSlash;

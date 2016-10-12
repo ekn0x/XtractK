@@ -43,6 +43,14 @@ FSMCppConstantExtraction::FSMCppConstantExtraction(FSMFileStatistics const & mFi
 	sStringEscapeChar = new State("StringEscapeChar", false);
 	sCharacter = new State("Character", false);
 	sCharacterEscapeChar = new State("CharacterEscapeChar", false);
+	sInteger = new State("Integer", false);
+	sMinus = new State("Minus", false);
+	sDouble = new State("Double", false);
+	sFloat = new State("Float", false);
+	sZero = new State("Zero", false);
+	sOctal = new State("Octal", false);
+	sBinary = new State("Binary", false);
+	sHexa = new State("HexaDecimal", false);
 
 	// Create transitions
 	tEnterSlash = new Transition("EnterSlash", new MatchSingleSymbol('/'), sSlash);
@@ -115,6 +123,14 @@ FSMCppConstantExtraction::FSMCppConstantExtraction(FSMFileStatistics const & mFi
 	addState(sStringEscapeChar);
 	addState(sCharacter);
 	addState(sCharacterEscapeChar);
+	addState(sInteger);
+	addState(sMinus);
+	addState(sDouble);
+	addState(sFloat);
+	addState(sZero);
+	addState(sOctal);
+	addState(sBinary);
+	addState(sHexa);
 
 	// Assign initial state
 	setInitialState(sCode);
