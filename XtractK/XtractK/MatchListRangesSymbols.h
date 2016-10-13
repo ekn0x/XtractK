@@ -18,6 +18,8 @@
 #include <list>
 #include <initializer_list>
 
+class MatchRangeSymbols;
+
 using namespace std;
 
 class MatchListRangesSymbols : public AbstractMatchSymbol
@@ -29,9 +31,9 @@ public:
 	MatchListRangesSymbols(symbol_t const first, symbol_t const last);
 	//! Constructeurs à l'aide de liste
 	//! List non initialisé
-	MatchListRangesSymbols(initializer_list<MatchRangeSymbol> const & rangeList);
+	MatchListRangesSymbols(initializer_list<MatchRangeSymbols> const & rangeList);
 	//! Liste deja initialiser
-	MatchListRangesSymbols(list<MatchRangeSymbol> const & rangeList);
+	MatchListRangesSymbols(list<MatchRangeSymbols> const & rangeList);
 	
 	//! Destructeur.
 	virtual ~MatchListRangesSymbols() = default;
