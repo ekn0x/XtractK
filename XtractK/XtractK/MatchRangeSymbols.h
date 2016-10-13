@@ -27,7 +27,7 @@ public:
 	//!	Les symboles de debut et de fin ne peuvent être modifiés par la suite. 
 	MatchRangeSymbols(symbol_t const first, symbol_t const last);
 	//! Destructeur.
-	virtual ~MatchRangeSymbols() = default;
+	virtual ~MatchRangeSymbols();
 
 	//! La fonction d'acceptation fait une comparaison du symbole et 
 	//!	retourne vrai si ce dernier est inclu dans la suite de symboles
@@ -39,7 +39,7 @@ public:
 	virtual AbstractMatchSymbol* clone() const override;
 
 protected:
-	Range rangeValues;
+	Range * rangeValues;
 };
 
 #endif
