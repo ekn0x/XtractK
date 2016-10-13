@@ -39,7 +39,7 @@ public:
 	virtual AbstractMatchSymbol* clone() const override;
 
 protected:
-	Range * rangeValues;
+	Range * mRange;
 };
 
 #endif
