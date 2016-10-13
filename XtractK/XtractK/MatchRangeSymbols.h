@@ -1,20 +1,21 @@
 //! \file MatchRangeSymbols.h
 //!
-//! \brief Définition de la classe MatchRangeSymbols.
+//! \brief DÃ©finition de la classe MatchRangeSymbols.
 //!
 //! \version 1.0
 //!
 //! \author Alexandre H. Lamarche\n
 //! \author	Guillaume Whittom\n
-//!		Étudiants
-//!		Département de génie de production automatisée\n
-//!		École de technologie supérieure\n
+//!		Ã‰tudiants
+//!		DÃ©partement de gÃ©nie de production automatisÃ©e\n
+//!		Ã‰cole de technologie supÃ©rieure\n
 //!
 
 #ifndef MATCH_RANGE_SYMBOLS_H
 #define MATCH_RANGE_SYMBOLS_H
 
 #include "AbstractMatchSymbol.h"
+#include "Range.h"
 
 using namespace std;
 
@@ -23,23 +24,22 @@ class MatchRangeSymbols : public AbstractMatchSymbol
 public:
 	MatchRangeSymbols() = delete;
 	//! Ce constructeur utilise une suite de symboles.
-	//!	Les symboles de debut et de fin ne peuvent être modifiés par la suite. 
+	//!	Les symboles de debut et de fin ne peuvent Ãªtre modifiÃ©s par la suite. 
 	MatchRangeSymbols(symbol_t const first, symbol_t const last);
 	//! Destructeur.
 	virtual ~MatchRangeSymbols() = default;
 
 	//! La fonction d'acceptation fait une comparaison du symbole et 
 	//!	retourne vrai si ce dernier est inclu dans la suite de symboles
-	//! de référence. La suite des symboles de référence est celle définie
-	//! lors de la définition de l'instance.
+	//! de rÃ©fÃ©rence. La suite des symboles de rÃ©fÃ©rence est celle dÃ©finie
+	//! lors de la dÃ©finition de l'instance.
 	virtual bool isMatching(symbol_t symbol) const override;
 
 	// Retourne une nouvelle copie de l'instance courante.
 	virtual AbstractMatchSymbol* clone() const override;
 
 protected:
-	symbol_t mFirst;
-	symbol_t mLast;
+	Range rangeValues;
 };
 
 #endif
