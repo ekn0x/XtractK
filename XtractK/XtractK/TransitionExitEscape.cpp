@@ -1,7 +1,5 @@
 #include "TransitionExitEscape.h"
 
-
-
 TransitionExitEscape::TransitionExitEscape(string const & name, AbstractMatchSymbol * matchSymbol, State * nextState, ostream * stream)
 	: TransitionOStream(name, matchSymbol, nextState, stream)
 {

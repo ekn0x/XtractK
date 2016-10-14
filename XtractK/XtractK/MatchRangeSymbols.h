@@ -15,7 +15,8 @@
 #define MATCH_RANGE_SYMBOLS_H
 
 #include "AbstractMatchSymbol.h"
-#include "Range.h"
+
+class Range;
 
 using namespace std;
 
@@ -36,7 +37,7 @@ public:
 	virtual bool isMatching(symbol_t symbol) const override;
 
 	// Retourne une nouvelle copie de l'instance courante.
-	virtual AbstractMatchSymbol* clone() const override;
+	//virtual AbstractMatchSymbol* clone() const override;
 
 protected:
 	Range * mRange;

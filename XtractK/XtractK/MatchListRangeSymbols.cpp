@@ -1,4 +1,5 @@
 #include "MatchListRangeSymbols.h"
+#include "Range.h"
 
 #include <algorithm>
 
@@ -12,7 +13,7 @@ MatchListRangeSymbols::MatchListRangeSymbols(initializer_list<Range> const & lis
 bool MatchListRangeSymbols::isMatching(symbol_t const & symbol)
 {
 	bool find = false;
-	for (auto it = mListRange.begin(); it!=mListRange.end() || !find ;++it)
+	for (auto it = mListRange.begin(); it!=mListRange.end() || !find ; ++it)
 	{
 		find = (*it).isInRange(symbol);
 	}

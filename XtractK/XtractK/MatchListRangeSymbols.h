@@ -17,6 +17,8 @@
 #include <list>
 #include <initializer_list>
 
+#include "Symbol.h"
+
 class Range;
 
 using namespace std;

@@ -18,77 +18,9 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="AbstractBehavioralState.h" />
-    <ClInclude Include="AbstractBehavioralTransition.h" />
-    <ClInclude Include="AbstractMatchSymbol.h" />
-    <ClInclude Include="FiniteStateMachine.h" />
-    <ClInclude Include="FSMCppCommentExtraction.h" />
-    <ClInclude Include="FSMCppConstantExtraction.h" />
-    <ClInclude Include="FSMFileStatistics.h" />
-    <ClInclude Include="MatchAllSymbols.h" />
-    <ClInclude Include="MatchListRangeSymbols.h" />
-    <ClInclude Include="MatchListSymbols.h" />
-    <ClInclude Include="MatchNotListSymbols.h" />
-    <ClInclude Include="MatchNotSingleSymbol.h" />
-    <ClInclude Include="MatchRangeSymbols.h" />
-    <ClInclude Include="MatchSingleSymbol.h" />
-    <ClInclude Include="Range.h" />
-    <ClInclude Include="State.h" />
-    <ClInclude Include="StateCounter.h" />
-    <ClInclude Include="Symbol.h" />
-    <ClInclude Include="Transition.h" />
-    <ClInclude Include="TransitionBackToComment.h" />
-    <ClInclude Include="TransitionCounter.h" />
-    <ClInclude Include="TransitionExitingCppStyle.h" />
-    <ClInclude Include="TransitionExitingCStyle.h" />
-    <ClInclude Include="TransitionExitK.h" />
-    <ClInclude Include="TransitionInComment.h" />
-    <ClInclude Include="TransitionKChar.h" />
-    <ClInclude Include="TransitionNewComment.h" />
-    <ClInclude Include="TransitionNewConstant.h" />
-    <ClInclude Include="TransitionOStream.h" />
-    <ClInclude Include="XtractC.h" />
-    <ClInclude Include="XtractK.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="AbstractBehavioralState.cpp" />
-    <ClCompile Include="AbstractBehavioralTransition.cpp" />
-    <ClCompile Include="AbstractMatchSymbol.cpp" />
-    <ClCompile Include="FiniteStateMachine.cpp" />
-    <ClCompile Include="FSMCppCommentExtraction.cpp" />
-    <ClCompile Include="FSMCppConstantExtraction.cpp" />
-    <ClCompile Include="FSMFileStatistics.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="MatchAllSymbols.cpp" />
-    <ClCompile Include="MatchListRangeSymbols.cpp" />
-    <ClCompile Include="MatchListSymbols.cpp" />
-    <ClCompile Include="MatchNotListSymbols.cpp" />
-    <ClCompile Include="MatchNotSingleSymbol.cpp" />
-    <ClCompile Include="MatchRangeSymbols.cpp" />
-    <ClCompile Include="MatchSingleSymbol.cpp" />
-    <ClCompile Include="Range.cpp" />
-    <ClCompile Include="State.cpp" />
-    <ClCompile Include="StateCounter.cpp" />
-    <ClCompile Include="Transition.cpp" />
-    <ClCompile Include="TransitionBackToComment.cpp" />
-    <ClCompile Include="TransitionCounter.cpp" />
-    <ClCompile Include="TransitionExitEscape.cpp" />
-    <ClCompile Include="TransitionExitEscape.h" />
-    <ClCompile Include="TransitionExitingCppStyle.cpp" />
-    <ClCompile Include="TransitionExitingCStyle.cpp" />
-    <ClCompile Include="TransitionExitK.cpp" />
-    <ClCompile Include="TransitionInComment.cpp" />
-    <ClCompile Include="TransitionKChar.cpp" />
-    <ClCompile Include="TransitionNewComment.cpp" />
-    <ClCompile Include="TransitionNewConstant.cpp" />
-    <ClCompile Include="TransitionOStream.cpp" />
-    <ClCompile Include="XtractC.cpp" />
-    <ClCompile Include="XtractK.cpp" />
-  </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{8ECDFD37-B1AD-468D-A7DE-C53885E541F3}</ProjectGuid>
-    <RootNamespace>XtractK</RootNamespace>
+    <ProjectGuid>{EFB97069-92D4-4092-9E32-E533DA5FFDA0}</ProjectGuid>
+    <RootNamespace>test_list</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -177,6 +109,9 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="Source.cpp" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
