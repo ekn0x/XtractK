@@ -24,7 +24,10 @@
 #include "MatchNotSingleSymbol.h"
 #include "MatchListSymbols.h"
 #include "MatchNotListSymbols.h"
+#include "Range.h"
 #include "MatchRangeSymbols.h"
+#include "MatchListRangeSymbols.h"
+#include "MatchNotListRangeSymbols.h"
 #include "MatchNotRangeSymbols.h"
 
 FSMCppConstantExtraction::FSMCppConstantExtraction(FSMFileStatistics const & mFileStatistics, int linePaddingLength)
@@ -79,6 +82,37 @@ FSMCppConstantExtraction::FSMCppConstantExtraction(FSMFileStatistics const & mFi
 	tExitEscapeCharCharacter = new TransitionBackToComment("ExitEscapeCharCharacter", new MatchAllSymbols(), sCharacter);
 	tHoldChar = new TransitionInComment("HoldCharConstant", new MatchAllSymbols(), sCharacter);
 	
+	//Integers
+	tEnterInteger = new TransitionNewComment("EnterInteger", new MatchRangeSymbols('1', '9'), sInteger, mFileStatistics, linePaddingLength);
+	tEnterIntegerFromMinus = new TransitionInComment("EnterIntegerFromMinus", new MatchRangeSymbols('0', '9'), sInteger);
+	tHoldInteger = new TransitionInComment("HoldInteger", new MatchRangeSymbols('0', '9'), sInteger);
+
+	//Doubles
+	tEnterDouble = new TransitionNewComment("EnterDouble", new MatchSingleSymbol('.'), sDouble, mFileStatistics, linePaddingLength);
+	tEnterDoubleFromStates = new TransitionInComment("EnterDoubleFromStates", new MatchSingleSymbol('.'), sDouble);
+	tHoldDouble = new TransitionInComment("HoldDouble", new MatchRangeSymbols('0', '9'), sDouble);
+
+	//Floats
+	tEnterFloat = new TransitionInComment("EnterFloat", new MatchListSymbols({ 'f', 'F' }), sFloat);
+
+	//Minus
+	tEnterMinus = new TransitionNewComment("EnterMinus", new MatchSingleSymbol('-'), sMinus, mFileStatistics, linePaddingLength);
+
+	//Zero
+	tEnterZero = new TransitionNewComment("EnterZero", new MatchSingleSymbol('0'), sZero, mFileStatistics, linePaddingLength);
+
+	//Binaries
+	tEnterBinary = new TransitionInComment("EnterBinary", new MatchListSymbols({ 'b', 'B' }), sBinary);
+	tHoldBinary = new TransitionInComment("HoldBinary", new MatchRangeSymbols('0', '1'), sBinary);
+
+	//Octals
+	tEnterOctal = new TransitionInComment("EnterOctal", new MatchRangeSymbols('0', '7'), sOctal);
+	tHoldOctal = new TransitionInComment("HoldOctal", new MatchRangeSymbols('0', '7'), sOctal);
+
+	//HexaDecimals
+	tEnterHexa = new TransitionInComment("EnterHexa", new MatchListSymbols({ 'x', 'X' }), sHexa);
+	tHoldHexa = new TransitionInComment("HoldHexa", new MatchListRangeSymbols({ Range('0', '9'), Range('A', 'F'), Range('a', 'f') }), sHexa);
+
 	// Add transitions to states
 	sCode->addTransition(tEnterSlash);
 	sCode->addTransition(tEnterString);
@@ -109,9 +143,6 @@ FSMCppConstantExtraction::FSMCppConstantExtraction(FSMFileStatistics const & mFi
 	sCharacter->addTransition(tEnterEscapeCharCharacter);
 	sCharacter->addTransition(tHoldChar);
 	sCharacterEscapeChar->addTransition(tExitEscapeCharCharacter);
-
-	sInteger->addTransition(tEnterIntegerFromCode);
-	sInteger->addTransition(tExitInteger);
 
 	// Add states to FSM
 	addState(sCode);

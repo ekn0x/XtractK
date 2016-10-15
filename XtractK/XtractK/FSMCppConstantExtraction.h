@@ -140,9 +140,37 @@ private:
 	TransitionBackToComment * tExitEscapeCharCharacter;
 	TransitionInComment * tHoldChar;
 
-	// Transition Integer
-	TransitionNewComment * tEnterIntegerFromCode;
-	Transition * tExitInteger;
+	//Integers
+	TransitionNewComment * tEnterInteger;
+	TransitionInComment * tEnterIntegerFromMinus;
+	TransitionInComment * tHoldInteger;
+
+	//Doubles
+	TransitionNewComment * tEnterDouble;
+	TransitionInComment * tEnterDoubleFromStates;
+	TransitionInComment * tHoldDouble;
+
+	//Floats
+	TransitionInComment * tEnterFloat;
+
+	//Minus
+	TransitionNewComment * tEnterMinus;
+
+	//Zeros
+	TransitionNewComment * tEnterZero;
+
+	//Binaries
+	TransitionInComment * tEnterBinary;
+	TransitionInComment * tHoldBinary;
+
+	//Octals
+	TransitionInComment * tEnterOctal;
+	TransitionInComment * tHoldOctal;
+
+	//HexaDecimals
+	TransitionInComment * tEnterHexa;
+	TransitionInComment * tHoldHexa;
+
 
 };
 
