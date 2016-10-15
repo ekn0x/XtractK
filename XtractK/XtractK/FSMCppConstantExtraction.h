@@ -37,13 +37,9 @@ class TransitionBackToComment;
 class TransitionExitingCStyle;
 class TransitionExitingCppStyle;
 
-class TransitionExitEscape;
-class TransitionKChar;
-class TransitionExitK;
-
 //! \brief		Automate dédié à l'extraction des commentaires d'
 //!				un fichier du langage C/C++.
-//! \details	Cette classe fait partie de la solution XtractC. 
+//! \details	Cette classe fait partie de la solution XtractK. 
 //! 
 //!				Elle correspond à l'implémentation de l'automate 
 //!				de droite présenté sur le schéma de conception présenté 
@@ -53,8 +49,9 @@ class TransitionExitK;
 //!
 //!				Plusieurs fonctions permettent de retourner quelques données 
 //!				statistiques :
-//!				 - le nombre de commentaire style-C
-//!				 - le nombre de commentaire style-C++
+//!				 - le nombre de constante textuelle string
+//!				 - le nombre de constante textuelle char
+//!				 - le nombre de constante numérique
 //!				 - le nombre de chaînes de caractères (`"abc"`)
 //!				 - le nombre de caractères (`'a'`)
 //!
@@ -115,30 +112,30 @@ private:
 	Transition * tEnterSlash;
 	Transition * tCancelSlash;
 
-	TransitionNewComment * tEnterCommentCStyle;
-	TransitionInComment * tCharCommentCStyle;
+	TransitionCounter * tEnterCommentCStyle;
+	Transition * tCharCommentCStyle;
 	Transition * tEnterStar;
-	TransitionBackToComment * tCancelStar;
-	TransitionInComment * tCommentStar;
-	TransitionExitingCStyle * tExitCommentCStyle;
+	Transition * tCancelStar;
+	Transition * tCommentStar;
+	Transition * tExitCommentCStyle;
 
-	TransitionNewComment * tEnterCommentCppStyle;
-	TransitionInComment * tCharCommentCppStyle;
-	TransitionExitingCppStyle * tExitCommentCppStyle;
+	TransitionCounter * tEnterCommentCppStyle;
+	Transition * tCharCommentCppStyle;
+	Transition * tExitCommentCppStyle;
 	Transition * tEnterEscapeCharComCppStyle;
-	TransitionBackToComment * tExitEscapeCharComCppStyle;
+	Transition * tExitEscapeCharComCppStyle;
 
-	TransitionCounter * tEnterString;
-	TransitionExitK * tExitString;
+	TransitionNewComment * tEnterString;
+	TransitionExitingCStyle * tExitString;
 	Transition * tEnterEscapeCharString;
-	TransitionExitEscape * tExitEscapeCharString;
-	TransitionKChar * tHoldString;
+	TransitionBackToComment * tExitEscapeCharString;
+	TransitionInComment * tHoldString;
 
-	TransitionCounter * tEnterCharacter;
-	TransitionExitK * tExitCharacter;
+	TransitionNewComment * tEnterCharacter;
+	TransitionExitingCStyle * tExitCharacter;
 	Transition * tEnterEscapeCharCharacter;
-	TransitionExitEscape * tExitEscapeCharCharacter;
-	TransitionKChar * tHoldChar;
+	TransitionBackToComment * tExitEscapeCharCharacter;
+	TransitionInComment * tHoldChar;
 
 };
 

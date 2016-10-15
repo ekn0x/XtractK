@@ -42,11 +42,8 @@
     <ClInclude Include="TransitionCounter.h" />
     <ClInclude Include="TransitionExitingCppStyle.h" />
     <ClInclude Include="TransitionExitingCStyle.h" />
-    <ClInclude Include="TransitionExitK.h" />
     <ClInclude Include="TransitionInComment.h" />
-    <ClInclude Include="TransitionKChar.h" />
     <ClInclude Include="TransitionNewComment.h" />
-    <ClInclude Include="TransitionNewConstant.h" />
     <ClInclude Include="TransitionOStream.h" />
     <ClInclude Include="XtractC.h" />
     <ClInclude Include="XtractK.h" />
@@ -73,15 +70,10 @@
     <ClCompile Include="Transition.cpp" />
     <ClCompile Include="TransitionBackToComment.cpp" />
     <ClCompile Include="TransitionCounter.cpp" />
-    <ClCompile Include="TransitionExitEscape.cpp" />
-    <ClCompile Include="TransitionExitEscape.h" />
     <ClCompile Include="TransitionExitingCppStyle.cpp" />
     <ClCompile Include="TransitionExitingCStyle.cpp" />
-    <ClCompile Include="TransitionExitK.cpp" />
     <ClCompile Include="TransitionInComment.cpp" />
-    <ClCompile Include="TransitionKChar.cpp" />
     <ClCompile Include="TransitionNewComment.cpp" />
-    <ClCompile Include="TransitionNewConstant.cpp" />
     <ClCompile Include="TransitionOStream.cpp" />
     <ClCompile Include="XtractC.cpp" />
     <ClCompile Include="XtractK.cpp" />

@@ -19,10 +19,6 @@
 #include "TransitionExitingCStyle.h"
 #include "TransitionExitingCppStyle.h"
 
-#include "TransitionExitEscape.h"
-#include "TransitionKChar.H"
-#include "TransitionExitK.h"
-
 #include "MatchAllSymbols.h"
 #include "MatchSingleSymbol.h"
 #include "MatchNotSingleSymbol.h"
@@ -56,30 +52,30 @@ FSMCppConstantExtraction::FSMCppConstantExtraction(FSMFileStatistics const & mFi
 	tEnterSlash = new Transition("EnterSlash", new MatchSingleSymbol('/'), sSlash);
 	tCancelSlash = new Transition("CancelSlash", new MatchNotListSymbols({ '*', '/' }), sCode);
 
-	tEnterCommentCStyle = new TransitionNewComment("EnterCommentCStyle", new MatchSingleSymbol('*'), sCommentCStyle, mFileStatistics, linePaddingLength);
-	tCharCommentCStyle = new TransitionInComment("CharCommentCStyle", new MatchNotSingleSymbol('*'), sCommentCStyle);
+	tEnterCommentCStyle = new TransitionCounter("EnterCommentCStyle", new MatchSingleSymbol('*'), sCommentCStyle);
+	tCharCommentCStyle = new Transition("CharCommentCStyle", new MatchNotSingleSymbol('*'), sCommentCStyle);
 	tEnterStar = new Transition("EnterStar", new MatchSingleSymbol('*'), sCommentCStyleStar);
-	tCancelStar = new TransitionBackToComment("CancelStar", new MatchNotListSymbols({ '/', '*' }), sCommentCStyle);
-	tCommentStar = new TransitionInComment("CommentStar", new MatchSingleSymbol('*'), sCommentCStyleStar);
-	tExitCommentCStyle = new TransitionExitingCStyle("ExitCommentCStyle", new MatchSingleSymbol('/'), sCode);
+	tCancelStar = new Transition("CancelStar", new MatchNotListSymbols({ '/', '*' }), sCommentCStyle);
+	tCommentStar = new Transition("CommentStar", new MatchSingleSymbol('*'), sCommentCStyleStar);
+	tExitCommentCStyle = new Transition("ExitCommentCStyle", new MatchSingleSymbol('/'), sCode);
 
-	tEnterCommentCppStyle = new TransitionNewComment("EnterCommentCppStyle", new MatchSingleSymbol('/'), sCommentCppStyle, mFileStatistics, linePaddingLength);
-	tCharCommentCppStyle = new TransitionInComment("CharCommentCppStyle", new MatchNotListSymbols({ '\\', '\n' }), sCommentCppStyle);
-	tExitCommentCppStyle = new TransitionExitingCppStyle("ExitCommentCppStyle", new MatchSingleSymbol('\n'), sCode);
+	tEnterCommentCppStyle = new TransitionCounter("EnterCommentCppStyle", new MatchSingleSymbol('/'), sCommentCppStyle);
+	tCharCommentCppStyle = new Transition("CharCommentCppStyle", new MatchNotListSymbols({ '\\', '\n' }), sCommentCppStyle);
+	tExitCommentCppStyle = new Transition("ExitCommentCppStyle", new MatchSingleSymbol('\n'), sCode);
 	tEnterEscapeCharComCppStyle = new Transition("EnterEscapeCharComCppStyle", new MatchSingleSymbol('\\'), sCommentCppStyleEscapeChar);
-	tExitEscapeCharComCppStyle = new TransitionBackToComment("ExitEscapeCharComCppStyle", new MatchAllSymbols(), sCommentCppStyle);
+	tExitEscapeCharComCppStyle = new Transition("ExitEscapeCharComCppStyle", new MatchAllSymbols(), sCommentCppStyle);
 
-	tEnterString = new TransitionCounter("EnterString", new MatchSingleSymbol('"'), sString);
-	tExitString = new TransitionExitK("ExitString", new MatchListSymbols({ '"', '\n' }), sCode);
+	tEnterString = new TransitionNewComment("EnterString", new MatchSingleSymbol('"'), sString, mFileStatistics, linePaddingLength);
+	tExitString = new TransitionExitingCStyle("ExitString", new MatchListSymbols({ '"', '\n' }), sCode);
 	tEnterEscapeCharString = new Transition("EnterEscapeCharString", new MatchSingleSymbol('\\'), sStringEscapeChar);
-	tExitEscapeCharString = new TransitionExitEscape("ExitEscapeCharString", new MatchAllSymbols(), sString);
-	tHoldString = new TransitionKChar("HoldStringConstant", new MatchAllSymbols(), sString);
+	tExitEscapeCharString = new TransitionBackToComment("ExitEscapeCharString", new MatchAllSymbols(), sString);
+	tHoldString = new TransitionInComment("HoldStringConstant", new MatchAllSymbols(), sString);
 
-	tEnterCharacter = new TransitionCounter("EnterCharacter", new MatchSingleSymbol('\''), sCharacter);
-	tExitCharacter = new TransitionExitK("ExitCharacter", new MatchListSymbols({ '\'', '\n' }), sCode);
+	tEnterCharacter = new TransitionNewComment("EnterCharacter", new MatchSingleSymbol('\''), sCharacter, mFileStatistics, linePaddingLength);
+	tExitCharacter = new TransitionExitingCStyle("ExitCharacter", new MatchListSymbols({ '\'', '\n' }), sCode);
 	tEnterEscapeCharCharacter = new Transition("EnterEscapeCharCharacter", new MatchSingleSymbol('\\'), sCharacterEscapeChar);
-	tExitEscapeCharCharacter = new TransitionExitEscape("ExitEscapeCharCharacter", new MatchAllSymbols(), sCharacter);
-	tHoldChar = new TransitionKChar("HoldCharConstant", new MatchAllSymbols(), sCharacter);
+	tExitEscapeCharCharacter = new TransitionBackToComment("ExitEscapeCharCharacter", new MatchAllSymbols(), sCharacter);
+	tHoldChar = new TransitionInComment("HoldCharConstant", new MatchAllSymbols(), sCharacter);
 
 	// Add transitions to states
 	sCode->addTransition(tEnterSlash);

@@ -13,8 +13,7 @@ void TransitionExitingCppStyle::process(symbol_t prevSymbol, symbol_t curSymbol)
 {
 	TransitionCounter::process(prevSymbol, curSymbol);
 
-	// pas besoin
-	// *mStream << curSymbol << endl;
+	*mStream << curSymbol << endl;
 }
 
 

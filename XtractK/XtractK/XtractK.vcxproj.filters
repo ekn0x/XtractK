@@ -52,14 +52,8 @@
     <Filter Include="Header Files\XtractC\Transition">
       <UniqueIdentifier>{6962bfe1-dc5c-41f3-96c3-576a3491d0f4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\XtractK\Transition">
-      <UniqueIdentifier>{341645dc-2929-4fba-945a-88ecd2a15121}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\XtractC\Transition">
       <UniqueIdentifier>{66c4aabb-96b6-411d-86e9-f031ab353d31}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\XtractK\Transition">
-      <UniqueIdentifier>{a7a14946-b686-48b9-9d48-f26402dcc8b4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -137,15 +131,6 @@
     </ClInclude>
     <ClInclude Include="XtractK.h">
       <Filter>Header Files\XtractK</Filter>
-    </ClInclude>
-    <ClInclude Include="TransitionNewConstant.h">
-      <Filter>Header Files\XtractK\Transition</Filter>
-    </ClInclude>
-    <ClInclude Include="TransitionKChar.h">
-      <Filter>Header Files\XtractK\Transition</Filter>
-    </ClInclude>
-    <ClInclude Include="TransitionExitK.h">
-      <Filter>Header Files\XtractK\Transition</Filter>
     </ClInclude>
     <ClInclude Include="MatchRangeSymbols.h">
       <Filter>Header Files\Finite State Machine\Symbol</Filter>
@@ -232,21 +217,6 @@
     </ClCompile>
     <ClCompile Include="FSMCppConstantExtraction.cpp">
       <Filter>Source Files\XtractK</Filter>
-    </ClCompile>
-    <ClCompile Include="TransitionNewConstant.cpp">
-      <Filter>Source Files\XtractK\Transition</Filter>
-    </ClCompile>
-    <ClCompile Include="TransitionExitEscape.h">
-      <Filter>Header Files\XtractK\Transition</Filter>
-    </ClCompile>
-    <ClCompile Include="TransitionExitEscape.cpp">
-      <Filter>Source Files\XtractK\Transition</Filter>
-    </ClCompile>
-    <ClCompile Include="TransitionKChar.cpp">
-      <Filter>Source Files\XtractK\Transition</Filter>
-    </ClCompile>
-    <ClCompile Include="TransitionExitK.cpp">
-      <Filter>Source Files\XtractK\Transition</Filter>
     </ClCompile>
     <ClCompile Include="MatchRangeSymbols.cpp">
       <Filter>Source Files\Finite State Machine\Symbol</Filter>
