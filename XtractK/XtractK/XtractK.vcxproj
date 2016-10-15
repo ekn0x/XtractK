@@ -29,7 +29,9 @@
     <ClInclude Include="MatchAllSymbols.h" />
     <ClInclude Include="MatchListRangeSymbols.h" />
     <ClInclude Include="MatchListSymbols.h" />
+    <ClInclude Include="MatchNotListRangeSymbols.h" />
     <ClInclude Include="MatchNotListSymbols.h" />
+    <ClInclude Include="MatchNotRangeSymbols.h" />
     <ClInclude Include="MatchNotSingleSymbol.h" />
     <ClInclude Include="MatchRangeSymbols.h" />
     <ClInclude Include="MatchSingleSymbol.h" />
@@ -60,7 +62,9 @@
     <ClCompile Include="MatchAllSymbols.cpp" />
     <ClCompile Include="MatchListRangeSymbols.cpp" />
     <ClCompile Include="MatchListSymbols.cpp" />
+    <ClCompile Include="MatchNotListRangeSymbols.cpp" />
     <ClCompile Include="MatchNotListSymbols.cpp" />
+    <ClCompile Include="MatchNotRangeSymbols.cpp" />
     <ClCompile Include="MatchNotSingleSymbol.cpp" />
     <ClCompile Include="MatchRangeSymbols.cpp" />
     <ClCompile Include="MatchSingleSymbol.cpp" />

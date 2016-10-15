@@ -52,8 +52,6 @@ class TransitionExitingCppStyle;
 //!				 - le nombre de constante textuelle string
 //!				 - le nombre de constante textuelle char
 //!				 - le nombre de constante numérique
-//!				 - le nombre de chaînes de caractères (`"abc"`)
-//!				 - le nombre de caractères (`'a'`)
 //!
 //!				Ces fonctions tiennent compte de l'état courant de l'automate 
 //!				et des caractères qui ont été traités jusqu'à ce moment.
@@ -95,10 +93,14 @@ private:
 	State * sCommentCStyleStar;
 	State * sCommentCppStyle;
 	State * sCommentCppStyleEscapeChar;
+	
+	// Liste des états textuelles
 	State * sString;
 	State * sStringEscapeChar;
 	State * sCharacter;
 	State * sCharacterEscapeChar;
+
+	// Liste des états numériques
 	State * sInteger;
 	State * sMinus;
 	State * sDouble;
@@ -107,7 +109,6 @@ private:
 	State * sOctal;
 	State * sBinary;
 	State * sHexa;
-
 
 	Transition * tEnterSlash;
 	Transition * tCancelSlash;
@@ -125,17 +126,23 @@ private:
 	Transition * tEnterEscapeCharComCppStyle;
 	Transition * tExitEscapeCharComCppStyle;
 
+	// Transition String
 	TransitionNewComment * tEnterString;
 	TransitionExitingCStyle * tExitString;
 	Transition * tEnterEscapeCharString;
 	TransitionBackToComment * tExitEscapeCharString;
 	TransitionInComment * tHoldString;
 
+	// Transition Char
 	TransitionNewComment * tEnterCharacter;
 	TransitionExitingCStyle * tExitCharacter;
 	Transition * tEnterEscapeCharCharacter;
 	TransitionBackToComment * tExitEscapeCharCharacter;
 	TransitionInComment * tHoldChar;
+
+	// Transition Integer
+	TransitionNewComment * tEnterIntegerFromCode;
+	Transition * tExitInteger;
 
 };
 

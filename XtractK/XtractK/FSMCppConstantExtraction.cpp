@@ -24,6 +24,8 @@
 #include "MatchNotSingleSymbol.h"
 #include "MatchListSymbols.h"
 #include "MatchNotListSymbols.h"
+#include "MatchRangeSymbols.h"
+#include "MatchNotRangeSymbols.h"
 
 FSMCppConstantExtraction::FSMCppConstantExtraction(FSMFileStatistics const & mFileStatistics, int linePaddingLength)
 	: FiniteStateMachine()
@@ -76,7 +78,7 @@ FSMCppConstantExtraction::FSMCppConstantExtraction(FSMFileStatistics const & mFi
 	tEnterEscapeCharCharacter = new Transition("EnterEscapeCharCharacter", new MatchSingleSymbol('\\'), sCharacterEscapeChar);
 	tExitEscapeCharCharacter = new TransitionBackToComment("ExitEscapeCharCharacter", new MatchAllSymbols(), sCharacter);
 	tHoldChar = new TransitionInComment("HoldCharConstant", new MatchAllSymbols(), sCharacter);
-
+	
 	// Add transitions to states
 	sCode->addTransition(tEnterSlash);
 	sCode->addTransition(tEnterString);
@@ -107,6 +109,9 @@ FSMCppConstantExtraction::FSMCppConstantExtraction(FSMFileStatistics const & mFi
 	sCharacter->addTransition(tEnterEscapeCharCharacter);
 	sCharacter->addTransition(tHoldChar);
 	sCharacterEscapeChar->addTransition(tExitEscapeCharCharacter);
+
+	sInteger->addTransition(tEnterIntegerFromCode);
+	sInteger->addTransition(tExitInteger);
 
 	// Add states to FSM
 	addState(sCode);

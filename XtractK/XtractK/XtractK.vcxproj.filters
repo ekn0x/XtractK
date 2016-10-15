@@ -141,6 +141,12 @@
     <ClInclude Include="Range.h">
       <Filter>Header Files\Finite State Machine\Symbol</Filter>
     </ClInclude>
+    <ClInclude Include="MatchNotRangeSymbols.h">
+      <Filter>Header Files\Finite State Machine\Symbol</Filter>
+    </ClInclude>
+    <ClInclude Include="MatchNotListRangeSymbols.h">
+      <Filter>Header Files\Finite State Machine\Symbol</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -225,6 +231,12 @@
       <Filter>Source Files\Finite State Machine\Symbol</Filter>
     </ClCompile>
     <ClCompile Include="Range.cpp">
+      <Filter>Source Files\Finite State Machine\Symbol</Filter>
+    </ClCompile>
+    <ClCompile Include="MatchNotRangeSymbols.cpp">
+      <Filter>Source Files\Finite State Machine\Symbol</Filter>
+    </ClCompile>
+    <ClCompile Include="MatchNotListRangeSymbols.cpp">
       <Filter>Source Files\Finite State Machine\Symbol</Filter>
     </ClCompile>
   </ItemGroup>

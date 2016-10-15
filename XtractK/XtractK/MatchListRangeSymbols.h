@@ -14,27 +14,30 @@
 #ifndef MATCH_LIST_RANGES_SYMBOLS_H
 #define MATCH_LIST_RANGES_SYMBOLS_H
 
+#include "AbstractMatchSymbol.h"
 #include <list>
 #include <initializer_list>
-
-#include "Symbol.h"
 
 class Range;
 
 using namespace std;
 
-class MatchListRangeSymbols
+class MatchListRangeSymbols : public AbstractMatchSymbol
 {
 public:
 	MatchListRangeSymbols() = delete;
+
+	MatchListRangeSymbols(list<Range> const & listRange);
 
 	MatchListRangeSymbols(initializer_list<Range> const & listRange);
 
 	~MatchListRangeSymbols() = default;
 
-	bool isMatching(symbol_t const & symbol);
+	virtual bool isMatching(symbol_t symbol) const override;
 
-private:
+	virtual AbstractMatchSymbol* clone() const override;
+
+protected:
 	list<Range>  mListRange;
 };
 

@@ -17,9 +17,8 @@ bool MatchRangeSymbols::isMatching(symbol_t symbol) const
 {
 	return mRange->isInRange(symbol);
 }
-/*
+
 AbstractMatchSymbol* MatchRangeSymbols::clone() const
 {
-	return new MatchRangeSymbols(mFirst, mLast);
+	return new MatchRangeSymbols(mRange->getFirst(), mRange->getLast());
 }
-*/

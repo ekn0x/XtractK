@@ -8,7 +8,7 @@ Range::Range(symbol_t f, symbol_t l)
 {
 }
 
-bool Range::isInRange(symbol_t const & symbol)
+bool Range::isInRange(symbol_t symbol) const
 {
 	if (symbol >= mFirst && symbol <= mLast)
 		return true;
@@ -16,7 +16,7 @@ bool Range::isInRange(symbol_t const & symbol)
 		return false;
 }
 
-bool Range::isNotInRange(symbol_t const & symbol)
+bool Range::isNotInRange(symbol_t const & symbol) const
 {
 	return !isInRange(symbol);
 }
