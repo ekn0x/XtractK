@@ -135,10 +135,10 @@ FSMCppConstantExtraction::FSMCppConstantExtraction(FSMFileStatistics const & mFi
 	sCode->addTransition(tEnterString);
 	sCode->addTransition(tEnterCharacter);
 	sCode->addTransition(tEnterWord);
-	//sCode->addTransition(tEnterIntegerFromCode);
-	//sCode->addTransition(tEnterMinus);
-	//sCode->addTransition(tEnterDoubleFromCode);
-	//sCode->addTransition(tEnterZero);
+	sCode->addTransition(tEnterIntegerFromCode);
+	sCode->addTransition(tEnterMinus);
+	sCode->addTransition(tEnterDoubleFromCode);
+	sCode->addTransition(tEnterZero);
 
 	sSlash->addTransition(tCancelSlash);
 	sSlash->addTransition(tEnterCommentCStyle);
