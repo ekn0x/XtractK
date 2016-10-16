@@ -18,11 +18,10 @@ MatchListRangeSymbols::MatchListRangeSymbols(initializer_list<Range> const & lis
 bool MatchListRangeSymbols::isMatching(symbol_t symbol) const
 {
 	bool find = false;
-	for (auto it = mListRange.begin(); it!=mListRange.end() || !find ; ++it)
+	for (auto it = mListRange.begin(); it!=mListRange.end() && !find ; ++it)
 	{
 		find = it->isInRange(symbol);
 	}
-	
 
 	return find;
 }

@@ -55,6 +55,12 @@
     <Filter Include="Source Files\XtractC\Transition">
       <UniqueIdentifier>{66c4aabb-96b6-411d-86e9-f031ab353d31}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\XtractK\Transition">
+      <UniqueIdentifier>{ac10d730-455a-45fd-8502-fea6e6030d3c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\XtractK\Transition">
+      <UniqueIdentifier>{6a39d7d9-bcaf-4fbf-ab3b-584ce7e25501}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AbstractBehavioralState.h">
@@ -147,6 +153,9 @@
     <ClInclude Include="MatchNotListRangeSymbols.h">
       <Filter>Header Files\Finite State Machine\Symbol</Filter>
     </ClInclude>
+    <ClInclude Include="TransitionExitConstant.h">
+      <Filter>Header Files\XtractK\Transition</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -238,6 +247,9 @@
     </ClCompile>
     <ClCompile Include="MatchNotListRangeSymbols.cpp">
       <Filter>Source Files\Finite State Machine\Symbol</Filter>
+    </ClCompile>
+    <ClCompile Include="TransitionExitConstant.cpp">
+      <Filter>Source Files\XtractK\Transition</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

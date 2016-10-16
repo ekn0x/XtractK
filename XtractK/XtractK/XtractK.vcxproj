@@ -42,6 +42,7 @@
     <ClInclude Include="Transition.h" />
     <ClInclude Include="TransitionBackToComment.h" />
     <ClInclude Include="TransitionCounter.h" />
+    <ClInclude Include="TransitionExitConstant.h" />
     <ClInclude Include="TransitionExitingCppStyle.h" />
     <ClInclude Include="TransitionExitingCStyle.h" />
     <ClInclude Include="TransitionInComment.h" />
@@ -74,6 +75,7 @@
     <ClCompile Include="Transition.cpp" />
     <ClCompile Include="TransitionBackToComment.cpp" />
     <ClCompile Include="TransitionCounter.cpp" />
+    <ClCompile Include="TransitionExitConstant.cpp" />
     <ClCompile Include="TransitionExitingCppStyle.cpp" />
     <ClCompile Include="TransitionExitingCStyle.cpp" />
     <ClCompile Include="TransitionInComment.cpp" />
