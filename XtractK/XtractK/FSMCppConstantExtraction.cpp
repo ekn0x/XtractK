@@ -18,6 +18,7 @@
 #include "TransitionBackToComment.h"
 #include "TransitionExitingCStyle.h"
 #include "TransitionExitingCppStyle.h"
+#include "TransitionExitConstant.h"
 
 #include "MatchAllSymbols.h"
 #include "MatchSingleSymbol.h"
@@ -43,6 +44,7 @@ FSMCppConstantExtraction::FSMCppConstantExtraction(FSMFileStatistics const & mFi
 	sString = new State("String", false);
 	sStringEscapeChar = new State("StringEscapeChar", false);
 	sCharacter = new State("Character", false);
+	sWord = new State("FreeWord", false);
 	sCharacterEscapeChar = new State("CharacterEscapeChar", false);
 	sInteger = new State("Integer", false);
 	sMinus = new State("Minus", false);
@@ -81,42 +83,62 @@ FSMCppConstantExtraction::FSMCppConstantExtraction(FSMFileStatistics const & mFi
 	tEnterEscapeCharCharacter = new Transition("EnterEscapeCharCharacter", new MatchSingleSymbol('\\'), sCharacterEscapeChar);
 	tExitEscapeCharCharacter = new TransitionBackToComment("ExitEscapeCharCharacter", new MatchAllSymbols(), sCharacter);
 	tHoldChar = new TransitionInComment("HoldCharConstant", new MatchAllSymbols(), sCharacter);
+
+	// free Words
+	tEnterWord = new TransitionCounter("EnterWord", new MatchListRangeSymbols({ Range('a', 'z'), Range('A', 'Z') }), sWord);
+	tExitWord = new Transition("ExitWord", new MatchListRangeSymbols({ Range('a', 'z'), Range('A', 'Z'), Range('0', '9') }), sCode);
+	tExitWord = new Transition("ExitWord", new MatchNotListRangeSymbols({ Range('a', 'z'), Range('A', 'Z'), Range('0', '9') }), sCode);
 	
 	//Integers
-	tEnterInteger = new TransitionNewComment("EnterInteger", new MatchRangeSymbols('1', '9'), sInteger, mFileStatistics, linePaddingLength);
-	tEnterIntegerFromMinus = new TransitionInComment("EnterIntegerFromMinus", new MatchRangeSymbols('0', '9'), sInteger);
+	tEnterIntegerFromCode = new TransitionNewComment("EnterInteger", new MatchRangeSymbols('1', '9'), sInteger, mFileStatistics, linePaddingLength);
+	tEnterIntegerFromMinus = new TransitionNewComment("EnterIntegerFromMinus", new MatchRangeSymbols('0', '9'), sInteger, mFileStatistics, linePaddingLength);
+	tEnterIntegerFromZero = new TransitionNewComment("EnterIntegerFromZero", new MatchNotListRangeSymbols({ Range('b','b'), Range('B', 'B'), Range('x','x'), Range('X','X'), Range('0','7'), Range('.', '.') }), sInteger, mFileStatistics, linePaddingLength);
 	tHoldInteger = new TransitionInComment("HoldInteger", new MatchRangeSymbols('0', '9'), sInteger);
+	tExitInteger = new TransitionExitConstant("ExitInteger", new MatchNotListRangeSymbols({ Range('.', '.'), Range('0', '9') }), sCode);
 
 	//Doubles
-	tEnterDouble = new TransitionNewComment("EnterDouble", new MatchSingleSymbol('.'), sDouble, mFileStatistics, linePaddingLength);
-	tEnterDoubleFromStates = new TransitionInComment("EnterDoubleFromStates", new MatchSingleSymbol('.'), sDouble);
+	tEnterDoubleFromCode = new TransitionNewComment("EnterDouble", new MatchSingleSymbol('.'), sDouble, mFileStatistics, linePaddingLength);
+	tEnterDoubleFromZero = new TransitionNewComment("EnterDoubleFromZero", new MatchSingleSymbol('.'), sDouble, mFileStatistics, linePaddingLength);
+	tEnterDoubleFromMinus = new TransitionNewComment("EnterDoubleFromMinus", new MatchSingleSymbol('.'), sDouble, mFileStatistics, linePaddingLength);
+	tEnterDoubleFromInteger = new TransitionInComment("EnterDoubleFromInteger", new MatchSingleSymbol('.'), sDouble);
 	tHoldDouble = new TransitionInComment("HoldDouble", new MatchRangeSymbols('0', '9'), sDouble);
+	tExitDouble = new TransitionExitConstant("ExitDouble", new MatchNotListRangeSymbols({ Range('.','.'), Range('f','f'), Range('F', 'F'), Range('0', '9') }), sCode);
 
 	//Floats
 	tEnterFloat = new TransitionInComment("EnterFloat", new MatchListSymbols({ 'f', 'F' }), sFloat);
+	tExitFloat = new TransitionExitConstant("ExitFloat", new MatchAllSymbols(), sCode);
 
 	//Minus
 	tEnterMinus = new TransitionNewComment("EnterMinus", new MatchSingleSymbol('-'), sMinus, mFileStatistics, linePaddingLength);
+	tExitMinus = new Transition("ExitMinusToCode", new MatchNotListRangeSymbols({ Range('.', '.'), Range('0', '9') }), sCode);
 
 	//Zero
-	tEnterZero = new TransitionNewComment("EnterZero", new MatchSingleSymbol('0'), sZero, mFileStatistics, linePaddingLength);
+	tEnterZero = new Transition("EnterZero", new MatchSingleSymbol('0'), sZero);
 
 	//Binaries
-	tEnterBinary = new TransitionInComment("EnterBinary", new MatchListSymbols({ 'b', 'B' }), sBinary);
+	tEnterBinary = new TransitionNewComment("EnterBinary", new MatchListSymbols({ 'b', 'B' }), sBinary, mFileStatistics, linePaddingLength);
 	tHoldBinary = new TransitionInComment("HoldBinary", new MatchRangeSymbols('0', '1'), sBinary);
+	tExitBinary = new TransitionExitConstant("ExitBinary", new MatchNotRangeSymbols('0', '1'), sCode);
 
 	//Octals
-	tEnterOctal = new TransitionInComment("EnterOctal", new MatchRangeSymbols('0', '7'), sOctal);
+	tEnterOctal = new TransitionNewComment("EnterOctal", new MatchRangeSymbols('0', '7'), sOctal, mFileStatistics, linePaddingLength);
 	tHoldOctal = new TransitionInComment("HoldOctal", new MatchRangeSymbols('0', '7'), sOctal);
+	tExitOctal = new TransitionExitConstant("ExitOctal", new MatchNotRangeSymbols('0', '7'), sCode);
 
 	//HexaDecimals
-	tEnterHexa = new TransitionInComment("EnterHexa", new MatchListSymbols({ 'x', 'X' }), sHexa);
+	tEnterHexa = new TransitionNewComment("EnterHexa", new MatchListSymbols({ 'x', 'X' }), sHexa, mFileStatistics, linePaddingLength);
 	tHoldHexa = new TransitionInComment("HoldHexa", new MatchListRangeSymbols({ Range('0', '9'), Range('A', 'F'), Range('a', 'f') }), sHexa);
+	tExitHexa = new TransitionExitConstant("ExitHexa", new MatchNotListRangeSymbols({ Range('0','9'), Range('A','F'), Range('a', 'f') }), sCode);
 
 	// Add transitions to states
 	sCode->addTransition(tEnterSlash);
 	sCode->addTransition(tEnterString);
 	sCode->addTransition(tEnterCharacter);
+	sCode->addTransition(tEnterWord);
+	//sCode->addTransition(tEnterIntegerFromCode);
+	//sCode->addTransition(tEnterMinus);
+	//sCode->addTransition(tEnterDoubleFromCode);
+	//sCode->addTransition(tEnterZero);
 
 	sSlash->addTransition(tCancelSlash);
 	sSlash->addTransition(tEnterCommentCStyle);
@@ -143,6 +165,38 @@ FSMCppConstantExtraction::FSMCppConstantExtraction(FSMFileStatistics const & mFi
 	sCharacter->addTransition(tEnterEscapeCharCharacter);
 	sCharacter->addTransition(tHoldChar);
 	sCharacterEscapeChar->addTransition(tExitEscapeCharCharacter);
+
+	sWord->addTransition(tHoldWord);
+	sWord->addTransition(tExitWord);
+
+	sInteger->addTransition(tEnterDoubleFromInteger);
+	sInteger->addTransition(tHoldInteger);
+	sInteger->addTransition(tExitInteger);
+
+	sMinus->addTransition(tEnterDoubleFromMinus);
+	sMinus->addTransition(tEnterIntegerFromMinus);
+	sMinus->addTransition(tExitMinus);
+
+	sDouble->addTransition(tEnterFloat);
+	sDouble->addTransition(tHoldDouble);
+	sDouble->addTransition(tExitDouble);
+
+	sFloat->addTransition(tExitFloat);
+
+	sZero->addTransition(tEnterBinary);
+	sZero->addTransition(tEnterOctal);
+	sZero->addTransition(tEnterHexa);
+	sZero->addTransition(tEnterDoubleFromZero);
+	sZero->addTransition(tEnterIntegerFromZero);
+
+	sBinary->addTransition(tHoldBinary);
+	sBinary->addTransition(tExitBinary);
+
+	sOctal->addTransition(tHoldOctal);
+	sOctal->addTransition(tExitOctal);
+
+	sHexa->addTransition(tHoldHexa);
+	sHexa->addTransition(tExitHexa);
 
 	// Add states to FSM
 	addState(sCode);

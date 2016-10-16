@@ -36,6 +36,7 @@ class TransitionInComment;
 class TransitionBackToComment;
 class TransitionExitingCStyle;
 class TransitionExitingCppStyle;
+class TransitionExitConstant;
 
 //! \brief		Automate dédié à l'extraction des commentaires d'
 //!				un fichier du langage C/C++.
@@ -99,6 +100,7 @@ private:
 	State * sStringEscapeChar;
 	State * sCharacter;
 	State * sCharacterEscapeChar;
+	State * sWord;
 
 	// Liste des états numériques
 	State * sInteger;
@@ -140,36 +142,52 @@ private:
 	TransitionBackToComment * tExitEscapeCharCharacter;
 	TransitionInComment * tHoldChar;
 
+	// Free Words
+	TransitionCounter * tEnterWord;
+	Transition * tHoldWord;
+	Transition * tExitWord;
+
+
 	//Integers
-	TransitionNewComment * tEnterInteger;
-	TransitionInComment * tEnterIntegerFromMinus;
+	TransitionNewComment * tEnterIntegerFromCode;
+	TransitionNewComment * tEnterIntegerFromMinus;
+	TransitionNewComment * tEnterIntegerFromZero;
 	TransitionInComment * tHoldInteger;
+	TransitionExitConstant * tExitInteger;
 
 	//Doubles
-	TransitionNewComment * tEnterDouble;
-	TransitionInComment * tEnterDoubleFromStates;
+	TransitionNewComment * tEnterDoubleFromCode;
+	TransitionNewComment * tEnterDoubleFromZero;
+	TransitionNewComment * tEnterDoubleFromMinus;
+	TransitionInComment * tEnterDoubleFromInteger;
 	TransitionInComment * tHoldDouble;
+	TransitionExitConstant * tExitDouble;
 
 	//Floats
 	TransitionInComment * tEnterFloat;
+	TransitionExitConstant * tExitFloat;
 
 	//Minus
 	TransitionNewComment * tEnterMinus;
+	Transition * tExitMinus;
 
 	//Zeros
-	TransitionNewComment * tEnterZero;
+	Transition * tEnterZero;
 
 	//Binaries
-	TransitionInComment * tEnterBinary;
+	TransitionNewComment * tEnterBinary;
 	TransitionInComment * tHoldBinary;
+	TransitionExitConstant * tExitBinary;
 
 	//Octals
-	TransitionInComment * tEnterOctal;
+	TransitionNewComment * tEnterOctal;
 	TransitionInComment * tHoldOctal;
+	TransitionExitConstant * tExitOctal;
 
 	//HexaDecimals
-	TransitionInComment * tEnterHexa;
+	TransitionNewComment * tEnterHexa;
 	TransitionInComment * tHoldHexa;
+	TransitionExitConstant * tExitHexa;
 
 
 };
