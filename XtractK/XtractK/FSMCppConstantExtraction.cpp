@@ -86,7 +86,7 @@ FSMCppConstantExtraction::FSMCppConstantExtraction(FSMFileStatistics const & mFi
 
 	// free Words
 	tEnterWord = new TransitionCounter("EnterWord", new MatchListRangeSymbols({ Range('a', 'z'), Range('A', 'Z') }), sWord);
-	tExitWord = new Transition("ExitWord", new MatchListRangeSymbols({ Range('a', 'z'), Range('A', 'Z'), Range('0', '9') }), sCode);
+	tHoldWord = new Transition("ExitWord", new MatchListRangeSymbols({ Range('a', 'z'), Range('A', 'Z'), Range('0', '9') }), sCode);
 	tExitWord = new Transition("ExitWord", new MatchNotListRangeSymbols({ Range('a', 'z'), Range('A', 'Z'), Range('0', '9') }), sCode);
 	
 	//Integers
